@@ -1,0 +1,615 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F4DAC01126416FF200330870 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DAC01026416FF200330870 /* AppDelegate.swift */; };
+		F4DAC01326416FF200330870 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DAC01226416FF200330870 /* SceneDelegate.swift */; };
+		F4DAC01526416FF200330870 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DAC01426416FF200330870 /* ViewController.swift */; };
+		F4DAC01826416FF200330870 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4DAC01626416FF200330870 /* Main.storyboard */; };
+		F4DAC01B26416FF200330870 /* COVID19inJapanApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4DAC01926416FF200330870 /* COVID19inJapanApp.xcdatamodeld */; };
+		F4DAC01D26416FF400330870 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4DAC01C26416FF400330870 /* Assets.xcassets */; };
+		F4DAC02026416FF400330870 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4DAC01E26416FF400330870 /* LaunchScreen.storyboard */; };
+		F4DAC02B26416FF400330870 /* COVID19inJapanAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DAC02A26416FF400330870 /* COVID19inJapanAppTests.swift */; };
+		F4DAC03626416FF400330870 /* COVID19inJapanAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DAC03526416FF400330870 /* COVID19inJapanAppUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F4DAC02726416FF400330870 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4DAC00526416FF200330870 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4DAC00C26416FF200330870;
+			remoteInfo = COVID19inJapanApp;
+		};
+		F4DAC03226416FF400330870 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4DAC00526416FF200330870 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4DAC00C26416FF200330870;
+			remoteInfo = COVID19inJapanApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F4DAC00D26416FF200330870 /* COVID19inJapanApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = COVID19inJapanApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4DAC01026416FF200330870 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F4DAC01226416FF200330870 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		F4DAC01426416FF200330870 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F4DAC01726416FF200330870 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F4DAC01A26416FF200330870 /* COVID19inJapanApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = COVID19inJapanApp.xcdatamodel; sourceTree = "<group>"; };
+		F4DAC01C26416FF400330870 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F4DAC01F26416FF400330870 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F4DAC02126416FF400330870 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4DAC02626416FF400330870 /* COVID19inJapanAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = COVID19inJapanAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4DAC02A26416FF400330870 /* COVID19inJapanAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = COVID19inJapanAppTests.swift; sourceTree = "<group>"; };
+		F4DAC02C26416FF400330870 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4DAC03126416FF400330870 /* COVID19inJapanAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = COVID19inJapanAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4DAC03526416FF400330870 /* COVID19inJapanAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = COVID19inJapanAppUITests.swift; sourceTree = "<group>"; };
+		F4DAC03726416FF400330870 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F4DAC00A26416FF200330870 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4DAC02326416FF400330870 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4DAC02E26416FF400330870 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F4DAC00426416FF200330870 = {
+			isa = PBXGroup;
+			children = (
+				F4DAC00F26416FF200330870 /* COVID19inJapanApp */,
+				F4DAC02926416FF400330870 /* COVID19inJapanAppTests */,
+				F4DAC03426416FF400330870 /* COVID19inJapanAppUITests */,
+				F4DAC00E26416FF200330870 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F4DAC00E26416FF200330870 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F4DAC00D26416FF200330870 /* COVID19inJapanApp.app */,
+				F4DAC02626416FF400330870 /* COVID19inJapanAppTests.xctest */,
+				F4DAC03126416FF400330870 /* COVID19inJapanAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F4DAC00F26416FF200330870 /* COVID19inJapanApp */ = {
+			isa = PBXGroup;
+			children = (
+				F4DAC01026416FF200330870 /* AppDelegate.swift */,
+				F4DAC01226416FF200330870 /* SceneDelegate.swift */,
+				F4DAC01426416FF200330870 /* ViewController.swift */,
+				F4DAC01626416FF200330870 /* Main.storyboard */,
+				F4DAC01C26416FF400330870 /* Assets.xcassets */,
+				F4DAC01E26416FF400330870 /* LaunchScreen.storyboard */,
+				F4DAC02126416FF400330870 /* Info.plist */,
+				F4DAC01926416FF200330870 /* COVID19inJapanApp.xcdatamodeld */,
+			);
+			path = COVID19inJapanApp;
+			sourceTree = "<group>";
+		};
+		F4DAC02926416FF400330870 /* COVID19inJapanAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				F4DAC02A26416FF400330870 /* COVID19inJapanAppTests.swift */,
+				F4DAC02C26416FF400330870 /* Info.plist */,
+			);
+			path = COVID19inJapanAppTests;
+			sourceTree = "<group>";
+		};
+		F4DAC03426416FF400330870 /* COVID19inJapanAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F4DAC03526416FF400330870 /* COVID19inJapanAppUITests.swift */,
+				F4DAC03726416FF400330870 /* Info.plist */,
+			);
+			path = COVID19inJapanAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F4DAC00C26416FF200330870 /* COVID19inJapanApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4DAC03A26416FF400330870 /* Build configuration list for PBXNativeTarget "COVID19inJapanApp" */;
+			buildPhases = (
+				F4DAC00926416FF200330870 /* Sources */,
+				F4DAC00A26416FF200330870 /* Frameworks */,
+				F4DAC00B26416FF200330870 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = COVID19inJapanApp;
+			productName = COVID19inJapanApp;
+			productReference = F4DAC00D26416FF200330870 /* COVID19inJapanApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F4DAC02526416FF400330870 /* COVID19inJapanAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4DAC03D26416FF400330870 /* Build configuration list for PBXNativeTarget "COVID19inJapanAppTests" */;
+			buildPhases = (
+				F4DAC02226416FF400330870 /* Sources */,
+				F4DAC02326416FF400330870 /* Frameworks */,
+				F4DAC02426416FF400330870 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4DAC02826416FF400330870 /* PBXTargetDependency */,
+			);
+			name = COVID19inJapanAppTests;
+			productName = COVID19inJapanAppTests;
+			productReference = F4DAC02626416FF400330870 /* COVID19inJapanAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F4DAC03026416FF400330870 /* COVID19inJapanAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4DAC04026416FF400330870 /* Build configuration list for PBXNativeTarget "COVID19inJapanAppUITests" */;
+			buildPhases = (
+				F4DAC02D26416FF400330870 /* Sources */,
+				F4DAC02E26416FF400330870 /* Frameworks */,
+				F4DAC02F26416FF400330870 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4DAC03326416FF400330870 /* PBXTargetDependency */,
+			);
+			name = COVID19inJapanAppUITests;
+			productName = COVID19inJapanAppUITests;
+			productReference = F4DAC03126416FF400330870 /* COVID19inJapanAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F4DAC00526416FF200330870 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					F4DAC00C26416FF200330870 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					F4DAC02526416FF400330870 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = F4DAC00C26416FF200330870;
+					};
+					F4DAC03026416FF400330870 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = F4DAC00C26416FF200330870;
+					};
+				};
+			};
+			buildConfigurationList = F4DAC00826416FF200330870 /* Build configuration list for PBXProject "COVID19inJapanApp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F4DAC00426416FF200330870;
+			productRefGroup = F4DAC00E26416FF200330870 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F4DAC00C26416FF200330870 /* COVID19inJapanApp */,
+				F4DAC02526416FF400330870 /* COVID19inJapanAppTests */,
+				F4DAC03026416FF400330870 /* COVID19inJapanAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F4DAC00B26416FF200330870 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4DAC02026416FF400330870 /* LaunchScreen.storyboard in Resources */,
+				F4DAC01D26416FF400330870 /* Assets.xcassets in Resources */,
+				F4DAC01826416FF200330870 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4DAC02426416FF400330870 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4DAC02F26416FF400330870 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F4DAC00926416FF200330870 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4DAC01526416FF200330870 /* ViewController.swift in Sources */,
+				F4DAC01126416FF200330870 /* AppDelegate.swift in Sources */,
+				F4DAC01326416FF200330870 /* SceneDelegate.swift in Sources */,
+				F4DAC01B26416FF200330870 /* COVID19inJapanApp.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4DAC02226416FF400330870 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4DAC02B26416FF400330870 /* COVID19inJapanAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4DAC02D26416FF400330870 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4DAC03626416FF400330870 /* COVID19inJapanAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F4DAC02826416FF400330870 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4DAC00C26416FF200330870 /* COVID19inJapanApp */;
+			targetProxy = F4DAC02726416FF400330870 /* PBXContainerItemProxy */;
+		};
+		F4DAC03326416FF400330870 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4DAC00C26416FF200330870 /* COVID19inJapanApp */;
+			targetProxy = F4DAC03226416FF400330870 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F4DAC01626416FF200330870 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4DAC01726416FF200330870 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F4DAC01E26416FF400330870 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4DAC01F26416FF400330870 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F4DAC03826416FF400330870 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F4DAC03926416FF400330870 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F4DAC03B26416FF400330870 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S3PW95J64Q;
+				INFOPLIST_FILE = COVID19inJapanApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Hiroaki-Hirabayashi.COVID19inJapanApp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F4DAC03C26416FF400330870 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S3PW95J64Q;
+				INFOPLIST_FILE = COVID19inJapanApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Hiroaki-Hirabayashi.COVID19inJapanApp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F4DAC03E26416FF400330870 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S3PW95J64Q;
+				INFOPLIST_FILE = COVID19inJapanAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Hiroaki-Hirabayashi.COVID19inJapanAppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/COVID19inJapanApp.app/COVID19inJapanApp";
+			};
+			name = Debug;
+		};
+		F4DAC03F26416FF400330870 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S3PW95J64Q;
+				INFOPLIST_FILE = COVID19inJapanAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Hiroaki-Hirabayashi.COVID19inJapanAppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/COVID19inJapanApp.app/COVID19inJapanApp";
+			};
+			name = Release;
+		};
+		F4DAC04126416FF400330870 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S3PW95J64Q;
+				INFOPLIST_FILE = COVID19inJapanAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Hiroaki-Hirabayashi.COVID19inJapanAppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = COVID19inJapanApp;
+			};
+			name = Debug;
+		};
+		F4DAC04226416FF400330870 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S3PW95J64Q;
+				INFOPLIST_FILE = COVID19inJapanAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Hiroaki-Hirabayashi.COVID19inJapanAppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = COVID19inJapanApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F4DAC00826416FF200330870 /* Build configuration list for PBXProject "COVID19inJapanApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4DAC03826416FF400330870 /* Debug */,
+				F4DAC03926416FF400330870 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4DAC03A26416FF400330870 /* Build configuration list for PBXNativeTarget "COVID19inJapanApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4DAC03B26416FF400330870 /* Debug */,
+				F4DAC03C26416FF400330870 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4DAC03D26416FF400330870 /* Build configuration list for PBXNativeTarget "COVID19inJapanAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4DAC03E26416FF400330870 /* Debug */,
+				F4DAC03F26416FF400330870 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4DAC04026416FF400330870 /* Build configuration list for PBXNativeTarget "COVID19inJapanAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4DAC04126416FF400330870 /* Debug */,
+				F4DAC04226416FF400330870 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F4DAC01926416FF200330870 /* COVID19inJapanApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F4DAC01A26416FF200330870 /* COVID19inJapanApp.xcdatamodel */,
+			);
+			currentVersion = F4DAC01A26416FF200330870 /* COVID19inJapanApp.xcdatamodel */;
+			path = COVID19inJapanApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = F4DAC00526416FF200330870 /* Project object */;
+}
