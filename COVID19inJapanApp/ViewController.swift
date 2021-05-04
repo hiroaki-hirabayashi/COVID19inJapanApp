@@ -11,7 +11,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        print("HelloWold")
+        print(type(of: "A"))
+        print(type(of: 1))
+        print(type(of: 0.1))
     }
 
 
