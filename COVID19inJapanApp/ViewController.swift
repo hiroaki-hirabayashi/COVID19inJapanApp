@@ -70,6 +70,16 @@ class ViewController: UIViewController {
         setUpLabel("重傷者数", size: labelSize, centerX: rightX, y: 120, font: labelFont, color: labelColor, contentView)
         setUpLabel("死者数", size: labelSize, centerX: leftX, y: 220, font: labelFont, color: labelColor, contentView)
         setUpLabel("退院者数", size: labelSize, centerX: rightX, y: 220, font: labelFont, color: labelColor, contentView)
+        
+        /*
+         contentViewの全heighが340
+         画面中央に配置している為、view.frame.size.height / 2 + ~
+         画面中央(view.frame.size.height / 2) + contentViewの半分の高さ170よりも20下にいく190、70下にいく240として、
+         常にcontentViewの下にボタンが配置されるようにする
+         */
+        let height = view.frame.size.height / 2
+        setUpButton("健康管理", size: labelSize, y: height + 190, color: colors.blue, parentView: view)
+        setUpButton("県別状況", size: labelSize, y: height + 240, color: colors.blue, parentView: view)
        
     }
     
@@ -88,6 +98,22 @@ class ViewController: UIViewController {
         // 色
         label.textColor = color
         parentView.addSubview(label)
+    }
+    
+    func setUpButton(_ title: String, size: CGSize, y: CGFloat, color: UIColor, parentView: UIView) {
+        let button = UIButton(type: .system)
+        button.setTitle(title, for: .normal)
+        button.frame.size = size
+        // 中心X座標
+        button.center.x = view.center.x
+        // 文字列に特殊な加工 今回は文字同士の間隔
+        let attributedTitle = NSAttributedString(string: title, attributes: [NSAttributedString.Key.kern : 8.0])
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        button.frame.origin.y = y
+        button.setTitleColor(color, for: .normal)
+        parentView.addSubview(button)
+        
+
     }
 
 
