@@ -15,6 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         seyUpGradation()
         setUpContent()
+        
        
     }
     
@@ -55,6 +56,37 @@ class ViewController: UIViewController {
         view.addSubview(contentView)
         // 画面下部の色
         view.backgroundColor = .systemGray6
+        
+        // 表示するラベルの設定
+        let labelFont = UIFont.systemFont(ofSize: 15, weight: .heavy)
+        let labelSize = CGSize(width: 150, height: 50)
+        let labelColor = colors.bluePurple
+        let leftX = view.frame.size.width * 0.33
+        let rightX = view.frame.size.width * 0.80
+        setUpLabel("PCR数", size: labelSize, centerX: leftX, y: 20, font: labelFont, color: labelColor, contentView)
+        setUpLabel("感染者数", size: labelSize, centerX: rightX, y: 20, font: labelFont, color: labelColor, contentView)
+        setUpLabel("入院者数", size: labelSize, centerX: leftX, y: 120, font: labelFont, color: labelColor, contentView)
+        setUpLabel("重傷者数", size: labelSize, centerX: rightX, y: 120, font: labelFont, color: labelColor, contentView)
+        setUpLabel("死者数", size: labelSize, centerX: leftX, y: 220, font: labelFont, color: labelColor, contentView)
+        setUpLabel("退院者数", size: labelSize, centerX: rightX, y: 220, font: labelFont, color: labelColor, contentView)
+       
+    }
+    
+    func setUpLabel(_ text: String, size: CGSize, centerX: CGFloat, y: CGFloat, font: UIFont, color: UIColor, _ parentView: UIView) {
+        let label = UILabel()
+        // 表示するテキスト
+        label.text = text
+        // テキストサイズ
+        label.frame.size = size
+        // 中心X座標
+        label.center.x = centerX
+        // 起点Y座標
+        label.frame.origin.y = y
+        // フォント
+        label.font = font
+        // 色
+        label.textColor = color
+        parentView.addSubview(label)
     }
 
 
