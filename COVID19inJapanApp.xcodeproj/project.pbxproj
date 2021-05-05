@@ -16,6 +16,7 @@
 		F4DAC02026416FF400330870 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4DAC01E26416FF400330870 /* LaunchScreen.storyboard */; };
 		F4DAC02B26416FF400330870 /* COVID19inJapanAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DAC02A26416FF400330870 /* COVID19inJapanAppTests.swift */; };
 		F4DAC03626416FF400330870 /* COVID19inJapanAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DAC03526416FF400330870 /* COVID19inJapanAppUITests.swift */; };
+		F4DAC04A26418CF800330870 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DAC04926418CF800330870 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		F4DAC03126416FF400330870 /* COVID19inJapanAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = COVID19inJapanAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4DAC03526416FF400330870 /* COVID19inJapanAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = COVID19inJapanAppUITests.swift; sourceTree = "<group>"; };
 		F4DAC03726416FF400330870 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4DAC04926418CF800330870 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				F4DAC01E26416FF400330870 /* LaunchScreen.storyboard */,
 				F4DAC02126416FF400330870 /* Info.plist */,
 				F4DAC01926416FF200330870 /* COVID19inJapanApp.xcdatamodeld */,
+				F4DAC04926418CF800330870 /* Colors.swift */,
 			);
 			path = COVID19inJapanApp;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4DAC01526416FF200330870 /* ViewController.swift in Sources */,
+				F4DAC04A26418CF800330870 /* Colors.swift in Sources */,
 				F4DAC01126416FF200330870 /* AppDelegate.swift in Sources */,
 				F4DAC01326416FF200330870 /* SceneDelegate.swift in Sources */,
 				F4DAC01B26416FF200330870 /* COVID19inJapanApp.xcdatamodeld in Sources */,
