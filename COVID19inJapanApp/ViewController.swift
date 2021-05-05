@@ -15,8 +15,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setUpGradation()
         setUpContent()
-        
-       
     }
     
     func setUpGradation() {
@@ -80,6 +78,20 @@ class ViewController: UIViewController {
         let height = view.frame.size.height / 2
         setUpButton("健康管理", size: labelSize, y: height + 190, color: colors.blue, parentView: view)
         setUpButton("県別状況", size: labelSize, y: height + 240, color: colors.blue, parentView: view)
+        
+        let imageView = UIImageView()
+        let image = UIImage(named: "virus")
+        imageView.image = image
+        // UIviewインスタンスの位置、サイズ設定 最初は画面外に配置する
+        imageView.frame = CGRect(x: view.frame.size.width, y: -65, width: 50, height: 50)
+        contentView.addSubview(imageView)
+        // withDuration→animation時間 delay→タイムラグ時間 options→アニメーションスタイル animations→変化させたい値を表現する領域
+        UIView.animate(withDuration: 1.5, delay: 0.5, options: [.curveEaseIn], animations: {
+            // 上記の内容で画面幅-100の位置に移動
+            imageView.frame = CGRect(x: self.view.frame.size.width - 100, y: -65, width: 50, height: 50)
+            // サイズ、位置変化 画像を−90度回転させる
+            imageView.transform = CGAffineTransform(rotationAngle: -90)
+        }, completion: nil)
        
     }
     // ラベル、文字
@@ -115,6 +127,9 @@ class ViewController: UIViewController {
         
         setUpImageButton("chat1", x: view.frame.size.width - 50).addTarget(self, action: #selector(chatAction), for: .touchDown)
         setUpImageButton("reload", x: 10).addTarget(self, action: #selector(reloadAction), for: .touchDown)
+        
+       
+        
     }
     // チャットボタン returnで呼び出し元にButtonを返す
     func setUpImageButton(_ name: String, x: CGFloat) -> UIButton {
