@@ -8,13 +8,26 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let colors = Colors()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("HelloWold")
-        print(type(of: "A"))
-        print(type(of: 1))
-        print(type(of: 0.1))
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height / 2 )
+        // グラデーション色設定
+        gradientLayer.colors = [colors.bluePurple.cgColor, colors.blue.cgColor]
+        // 方向の始点
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        // 方向の終点
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        // レイヤーCAGradientLayerに乗せるのでaddSubViewではない
+        view.layer.insertSublayer(gradientLayer, at: 0)
+        /*
+         CG = CoreGraphics UIColorとは別の色の型
+         UIColor → CGColor型へ
+         */
+        
     }
 
 
