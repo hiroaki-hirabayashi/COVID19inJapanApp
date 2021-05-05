@@ -63,6 +63,7 @@ class ViewController: UIViewController {
         let labelColor = colors.bluePurple
         let leftX = view.frame.size.width * 0.33
         let rightX = view.frame.size.width * 0.80
+        setUpLabel("COVID19 in Japan", size: CGSize(width: 300, height: 35), centerX: view.center.x - 20, y: -60, font: .systemFont(ofSize: 25, weight: .heavy), color: .white, contentView)
         setUpLabel("PCR数", size: labelSize, centerX: leftX, y: 20, font: labelFont, color: labelColor, contentView)
         setUpLabel("感染者数", size: labelSize, centerX: rightX, y: 20, font: labelFont, color: labelColor, contentView)
         setUpLabel("入院者数", size: labelSize, centerX: leftX, y: 120, font: labelFont, color: labelColor, contentView)
