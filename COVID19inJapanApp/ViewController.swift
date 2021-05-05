@@ -13,13 +13,13 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        seyUpGradation()
+        setUpGradation()
         setUpContent()
         
        
     }
     
-    func seyUpGradation() {
+    func setUpGradation() {
         // 画面上部
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height / 2 )
@@ -82,7 +82,7 @@ class ViewController: UIViewController {
         setUpButton("県別状況", size: labelSize, y: height + 240, color: colors.blue, parentView: view)
        
     }
-    
+    // ラベル、文字
     func setUpLabel(_ text: String, size: CGSize, centerX: CGFloat, y: CGFloat, font: UIFont, color: UIColor, _ parentView: UIView) {
         let label = UILabel()
         // 表示するテキスト
@@ -113,7 +113,31 @@ class ViewController: UIViewController {
         button.setTitleColor(color, for: .normal)
         parentView.addSubview(button)
         
+        setUpImageButton("chat1", x: view.frame.size.width - 50).addTarget(self, action: #selector(chatAction), for: .touchDown)
+        setUpImageButton("reload", x: 10).addTarget(self, action: #selector(reloadAction), for: .touchDown)
+    }
+    // チャットボタン returnで呼び出し元にButtonを返す
+    func setUpImageButton(_ name: String, x: CGFloat) -> UIButton {
+        let button = UIButton(type: .system)
+        // UIImageインスタンス、ボタン状態
+        button.setImage(UIImage(named: name), for: .normal)
+        button.frame.size = CGSize(width: 30, height: 30)
+        // ボタンのX,Y座標
+        button.frame.origin = CGPoint(x: x, y: 25)
+        button.tintColor = .white
+        view.addSubview(button)
+        return button
+    }
+    
+    @objc func chatAction() {
+        print("chatタップした")
+    }
+    
+    @objc func reloadAction() {
+        print("reloadタップした")
 
+        loadView()
+        viewDidLoad()
     }
 
 
