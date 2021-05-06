@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F463975426436D150031C4EA /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463975326436D150031C4EA /* Entity.swift */; };
+		F46397592643B7920031C4EA /* WebAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46397582643B7920031C4EA /* WebAPI.swift */; };
 		F4DAC01126416FF200330870 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DAC01026416FF200330870 /* AppDelegate.swift */; };
 		F4DAC01326416FF200330870 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DAC01226416FF200330870 /* SceneDelegate.swift */; };
 		F4DAC01526416FF200330870 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DAC01426416FF200330870 /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		F463975326436D150031C4EA /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		F46397582643B7920031C4EA /* WebAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPI.swift; sourceTree = "<group>"; };
 		F4DAC00D26416FF200330870 /* COVID19inJapanApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = COVID19inJapanApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4DAC01026416FF200330870 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4DAC01226416FF200330870 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				F4DAC01926416FF200330870 /* COVID19inJapanApp.xcdatamodeld */,
 				F4DAC04926418CF800330870 /* Colors.swift */,
 				F463975326436D150031C4EA /* Entity.swift */,
+				F46397582643B7920031C4EA /* WebAPI.swift */,
 			);
 			path = COVID19inJapanApp;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				F463975426436D150031C4EA /* Entity.swift in Sources */,
 				F4DAC01126416FF200330870 /* AppDelegate.swift in Sources */,
 				F4DAC01326416FF200330870 /* SceneDelegate.swift in Sources */,
+				F46397592643B7920031C4EA /* WebAPI.swift in Sources */,
 				F4DAC01B26416FF200330870 /* COVID19inJapanApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
