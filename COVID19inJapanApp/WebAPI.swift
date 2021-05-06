@@ -28,6 +28,5 @@ struct Covid19API {
                 completion(result)
             }
         }.resume()
-        
     }
 }
