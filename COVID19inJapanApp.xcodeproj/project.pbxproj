@@ -110,14 +110,14 @@
 				F4DAC01026416FF200330870 /* AppDelegate.swift */,
 				F4DAC01226416FF200330870 /* SceneDelegate.swift */,
 				F4DAC01426416FF200330870 /* ViewController.swift */,
+				F4DAC04926418CF800330870 /* Colors.swift */,
+				F463975326436D150031C4EA /* Entity.swift */,
+				F46397582643B7920031C4EA /* WebAPI.swift */,
 				F4DAC01626416FF200330870 /* Main.storyboard */,
 				F4DAC01C26416FF400330870 /* Assets.xcassets */,
 				F4DAC01E26416FF400330870 /* LaunchScreen.storyboard */,
 				F4DAC02126416FF400330870 /* Info.plist */,
 				F4DAC01926416FF200330870 /* COVID19inJapanApp.xcdatamodeld */,
-				F4DAC04926418CF800330870 /* Colors.swift */,
-				F463975326436D150031C4EA /* Entity.swift */,
-				F46397582643B7920031C4EA /* WebAPI.swift */,
 			);
 			path = COVID19inJapanApp;
 			sourceTree = "<group>";

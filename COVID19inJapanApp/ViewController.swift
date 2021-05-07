@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     let colors = Colors()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpGradation()
@@ -33,7 +33,6 @@ class ViewController: UIViewController {
          CG = CoreGraphics UIColorとは別の色の型
          UIColor → CGColor型へ
          */
-
     }
     
     func setUpContent() {
@@ -92,9 +91,14 @@ class ViewController: UIViewController {
             // サイズ、位置変化 画像を−90度回転させる
             imageView.transform = CGAffineTransform(rotationAngle: -90)
         }, completion: nil)
-       
+        
+        setUpAPI(parentView: contentView)
+        
+        //        setUpAPILabel(discharge, size: labelSize, centerX: rightX, y: 260, font: labelFont, color: labelColor, parentView)
+        
     }
-    // ラベル、文字
+    
+    // 表示する項目のラベル、文字
     func setUpLabel(_ text: String, size: CGSize, centerX: CGFloat, y: CGFloat, font: UIFont, color: UIColor, _ parentView: UIView) {
         let label = UILabel()
         // 表示するテキスト
@@ -112,6 +116,60 @@ class ViewController: UIViewController {
         parentView.addSubview(label)
     }
     
+    // データを表示するためのラベルを配置する
+    func setUpAPILabel(_ label: UILabel, size: CGSize, centerX: CGFloat, y: CGFloat, font: UIFont, color: UIColor, _ parentView: UIView) {
+        label.frame.size = size
+        label.center.x = centerX
+        label.frame.origin.y = y
+        label.font = font
+        label.textColor = color
+        parentView.addSubview(label)
+    }
+    
+    func setUpAPI(parentView: UIView) {
+        let pcr = UILabel()
+        let positive = UILabel()
+        let hospitalize = UILabel()
+        let severe = UILabel()
+        let death = UILabel()
+        let discharge = UILabel()
+        // サイズ、x座標(横)、font, color
+        let size = CGSize(width: 200, height: 40)
+        let leftX = view.frame.size.width * 0.38
+        let rightX = view.frame.size.width * 0.85
+        let font = UIFont.systemFont(ofSize: 35, weight: .heavy)
+        let color = colors.blue
+        // PCR
+        setUpAPILabel(pcr, size: size, centerX: leftX - 20, y: 60, font: font, color: color, parentView)
+        // 感染者数
+        setUpAPILabel(positive, size: size, centerX: rightX, y: 60
+                      , font: font, color: color, parentView)
+        // 入院者数
+        setUpAPILabel(hospitalize, size: size, centerX: leftX, y: 160, font: font, color: color, parentView)
+        // 重傷者数
+        setUpAPILabel(severe, size: size, centerX: rightX, y: 160, font: font, color: color, parentView)
+        // 死者数
+        setUpAPILabel(death, size: size, centerX: leftX, y: 260, font: font, color: color, parentView)
+        // 退院者数
+        setUpAPILabel(discharge, size: size, centerX: rightX, y: 260, font: font, color: color, parentView)
+        
+        /*
+         APIリクエストを呼び出す ↓受け取ったデータを格納する
+         クロージャの中は自動的にメインスレッドではなくなってしまうため、DispatchQueue.main.async{}でメインスレッドにしてあげる
+         resultでCovidInfo.Total型のデータを受け取っているので、Entityファイルに定義した通りにCovidInfo.Total.変数としてアクセス出来る
+         */
+        Covid19API.getTotal { (result: CovidInfo.Total) -> Void in DispatchQueue.main.async {
+            pcr.text = "\(result.pcr)"
+            positive.text = "\(result.positive)"
+            hospitalize.text = "\(result.hospitalize)"
+            severe.text = "\(result.severe)"
+            death.text = "\(result.death)"
+            discharge.text = "\(result.discharge)"
+        }
+        
+        }
+    }
+    
     func setUpButton(_ title: String, size: CGSize, y: CGFloat, color: UIColor, parentView: UIView) {
         let button = UIButton(type: .system)
         button.setTitle(title, for: .normal)
@@ -127,10 +185,8 @@ class ViewController: UIViewController {
         
         setUpImageButton("chat1", x: view.frame.size.width - 50).addTarget(self, action: #selector(chatAction), for: .touchDown)
         setUpImageButton("reload", x: 10).addTarget(self, action: #selector(reloadAction), for: .touchDown)
-        
-       
-        
     }
+    
     // チャットボタン returnで呼び出し元にButtonを返す
     func setUpImageButton(_ name: String, x: CGFloat) -> UIButton {
         let button = UIButton(type: .system)
@@ -150,11 +206,12 @@ class ViewController: UIViewController {
     
     @objc func reloadAction() {
         print("reloadタップした")
-
+        
         loadView()
         viewDidLoad()
     }
-
-
+    
+    
+    
 }
 
