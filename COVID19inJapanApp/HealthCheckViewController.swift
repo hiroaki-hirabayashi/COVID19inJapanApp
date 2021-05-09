@@ -12,7 +12,14 @@ class HealthCheckViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .systemGroupedBackground
+        let scrollView = UIScrollView()
+        // scrollViewの位置とサイズ(画面上のどの範囲をscrollViewにするか)
+        // スクロールする量ではない
+        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
+        // スクロールする量
+        scrollView.contentSize = CGSize(width: view.frame.size.width, height: 1000)
+        view.addSubview(scrollView)
     }
     
 
