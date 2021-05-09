@@ -5,11 +5,12 @@
 //  Created by 平林 宏淳 on 2021/05/04.
 //
 
+import Foundation
 import UIKit
 
-class ViewController: UIViewController {
+class TopViewController: UIViewController {
     
-    let colors = Colors()
+   let colors = Colors()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -210,8 +211,5 @@ class ViewController: UIViewController {
         loadView()
         viewDidLoad()
     }
-    
-    
-    
-}
 
+}
