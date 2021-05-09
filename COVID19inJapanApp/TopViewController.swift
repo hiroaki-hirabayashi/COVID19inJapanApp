@@ -10,7 +10,7 @@ import UIKit
 
 class TopViewController: UIViewController {
     
-   let colors = Colors()
+    let colors = Colors()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +76,7 @@ class TopViewController: UIViewController {
          常にcontentViewの下にボタンが配置されるようにする
          */
         let height = view.frame.size.height / 2
-        setUpButton("健康管理", size: labelSize, y: height + 190, color: colors.blue, parentView: view)
+        setUpButton("健康管理", size: labelSize, y: height + 190, color: colors.blue, parentView: view).addTarget(self, action: #selector(goHealthCheck), for: .touchDown)
         setUpButton("県別状況", size: labelSize, y: height + 240, color: colors.blue, parentView: view)
         
         let imageView = UIImageView()
@@ -171,7 +171,7 @@ class TopViewController: UIViewController {
         }
     }
     
-    func setUpButton(_ title: String, size: CGSize, y: CGFloat, color: UIColor, parentView: UIView) {
+    func setUpButton(_ title: String, size: CGSize, y: CGFloat, color: UIColor, parentView: UIView) -> UIButton {
         let button = UIButton(type: .system)
         button.setTitle(title, for: .normal)
         button.frame.size = size
@@ -186,6 +186,8 @@ class TopViewController: UIViewController {
         
         setUpImageButton("chat1", x: view.frame.size.width - 50).addTarget(self, action: #selector(chatAction), for: .touchDown)
         setUpImageButton("reload", x: 10).addTarget(self, action: #selector(reloadAction), for: .touchDown)
+        
+        return button
     }
     
     // チャットボタン returnで呼び出し元にButtonを返す
@@ -211,5 +213,11 @@ class TopViewController: UIViewController {
         loadView()
         viewDidLoad()
     }
-
+    
+    @objc func goHealthCheck() {
+        let storyboard = UIStoryboard(name: "HealthCheck", bundle: nil)
+        let HealthCheckViewController = storyboard.instantiateViewController(withIdentifier: "HealthCheckViewController") as! HealthCheckViewController
+        self.navigationController?.pushViewController(HealthCheckViewController, animated: true)
+    }
+    
 }
