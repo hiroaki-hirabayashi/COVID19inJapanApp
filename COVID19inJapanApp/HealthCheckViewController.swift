@@ -11,7 +11,7 @@ import FSCalendar
 final class HealthCheckViewController: UIViewController {
     
     private let colors = Colors()
-    let scrollView = UIScrollView()
+    private let scrollView = UIScrollView()
 
     
     override func viewDidLoad() {
@@ -19,11 +19,40 @@ final class HealthCheckViewController: UIViewController {
 
         setUpScrollView()
         setUpCalendar()
+        setUpHealthCheck()
+        setUpResultButton()
+    }
+   
+    private func setUpScrollView() {
 
+        // scrollViewの位置とサイズ(画面上のどの範囲をscrollViewにするか)
+        // スクロールする量ではない
+        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
+        // スクロールする量
+        scrollView.contentSize = CGSize(width: view.frame.size.width, height: 950)
+        view.addSubview(scrollView)
 
+    }
+    
+    private func setUpCalendar() {
+        view.backgroundColor = .systemGroupedBackground
         
+        let calendar = FSCalendar()
+        calendar.frame = CGRect(x: 20, y: 10, width: view.frame.size.width - 40, height: 300)
         
-        
+        calendar.appearance.headerDateFormat = "YYYY年MM月"
+        calendar.calendarWeekdayView.weekdayLabels[0].text = "日"
+        calendar.calendarWeekdayView.weekdayLabels[1].text = "月"
+        calendar.calendarWeekdayView.weekdayLabels[2].text = "火"
+        calendar.calendarWeekdayView.weekdayLabels[3].text = "水"
+        calendar.calendarWeekdayView.weekdayLabels[4].text = "木"
+        calendar.calendarWeekdayView.weekdayLabels[5].text = "金"
+        calendar.calendarWeekdayView.weekdayLabels[6].text = "土"
+        scrollView.addSubview(calendar)
+
+    }
+    
+    private func setUpHealthCheck() {
         let checkLabel = UILabel()
         checkLabel.text = "健康チェック"
         checkLabel.textColor = colors.white
@@ -59,36 +88,9 @@ final class HealthCheckViewController: UIViewController {
         healthCheckImage(parentView: uiView5, imageName: "check5")
         healthCheckLabel(parentView: uiView5, text: "だるさがひどい")
         healthCheckSwitch(parentView: uiView5, action: #selector(switchAction))
-       
-    }
-   
-    func setUpScrollView() {
-        // scrollViewの位置とサイズ(画面上のどの範囲をscrollViewにするか)
-        // スクロールする量ではない
-        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
-        // スクロールする量
-        scrollView.contentSize = CGSize(width: view.frame.size.width, height: 1000)
-        view.addSubview(scrollView)
 
     }
     
-    func setUpCalendar() {
-        view.backgroundColor = .systemGroupedBackground
-        
-        let calendar = FSCalendar()
-        calendar.frame = CGRect(x: 20, y: 10, width: view.frame.size.width - 40, height: 300)
-        
-        calendar.appearance.headerDateFormat = "YYYY年MM月"
-        calendar.calendarWeekdayView.weekdayLabels[0].text = "日"
-        calendar.calendarWeekdayView.weekdayLabels[1].text = "月"
-        calendar.calendarWeekdayView.weekdayLabels[2].text = "火"
-        calendar.calendarWeekdayView.weekdayLabels[3].text = "水"
-        calendar.calendarWeekdayView.weekdayLabels[4].text = "木"
-        calendar.calendarWeekdayView.weekdayLabels[5].text = "金"
-        calendar.calendarWeekdayView.weekdayLabels[6].text = "土"
-        scrollView.addSubview(calendar)
-
-    }
     
     private func healthCheckView(y: CGFloat) -> UIView {
         let uiView = UIView()
@@ -121,6 +123,31 @@ final class HealthCheckViewController: UIViewController {
         parentView.addSubview(imageView)
         
     }
+    
+    private func healthCheckSwitch(parentView: UIView, action: Selector) {
+        let uiSwitch = UISwitch()
+        uiSwitch.frame = CGRect(x: parentView.frame.size.width - 60, y: 20, width: 50, height: 30)
+        uiSwitch.addTarget(self, action: action, for: .valueChanged)
+        parentView.addSubview(uiSwitch)
+        
+    }
+    
+    private func setUpResultButton() {
+        let resultButton = UIButton()
+        resultButton.frame = CGRect(x: 0, y: 820, width: 200, height: 40)
+        //resultButtonの中心をscrollViewの中心に
+        resultButton.center.x = scrollView.center.x
+        resultButton.titleLabel?.font = .systemFont(ofSize: 20)
+        resultButton.layer.cornerRadius = 5
+        resultButton.setTitle("診断完了", for: .normal)
+        resultButton.setTitleColor(colors.white, for: .normal)
+        resultButton.backgroundColor = colors.blue
+        // touchUpInside ボタンの内側 touchUpOutside ボタン外側 どちらで離しても発火する
+        resultButton.addTarget(self, action: #selector(resultButtonAction), for: [.touchUpInside, .touchUpOutside])
+        scrollView.addSubview(resultButton)
+        
+    }
+    
     // Selector型で呼び出す関数には@objc
     @objc func switchAction(sender: UISwitch) {
         if sender.isOn {
@@ -130,13 +157,10 @@ final class HealthCheckViewController: UIViewController {
         }
     }
     
-    private func healthCheckSwitch(parentView: UIView, action: Selector) {
-        let uiSwitch = UISwitch()
-        uiSwitch.frame = CGRect(x: parentView.frame.size.width - 60, y: 20, width: 50, height: 30)
-        uiSwitch.addTarget(self, action: action, for: .valueChanged)
-        parentView.addSubview(uiSwitch)
-        
+    @objc func resultButtonAction() {
+        print("診断完了")
     }
+
 
     
 }
