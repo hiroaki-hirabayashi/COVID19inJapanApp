@@ -12,35 +12,38 @@ final class HealthCheckViewController: UIViewController {
     
     private let colors = Colors()
     private let scrollView = UIScrollView()
-
+    private let calendar = FSCalendar()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setUpScrollView()
         setUpCalendar()
         setUpHealthCheck()
         setUpResultButton()
-    }
-   
-    private func setUpScrollView() {
+        calendar.delegate = self
 
+        
+    }
+    
+    private func setUpScrollView() {
+        
         // scrollViewの位置とサイズ(画面上のどの範囲をscrollViewにするか)
         // スクロールする量ではない
         scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
         // スクロールする量
         scrollView.contentSize = CGSize(width: view.frame.size.width, height: 950)
         view.addSubview(scrollView)
-
+        
     }
     
     private func setUpCalendar() {
         view.backgroundColor = .systemGroupedBackground
-        
-        let calendar = FSCalendar()
+
         calendar.frame = CGRect(x: 20, y: 10, width: view.frame.size.width - 40, height: 300)
-        
-        calendar.appearance.headerDateFormat = "YYYY年MM月"
+        calendar.appearance.headerDateFormat = "yyyy年MM月dd日"
         calendar.calendarWeekdayView.weekdayLabels[0].text = "日"
         calendar.calendarWeekdayView.weekdayLabels[1].text = "月"
         calendar.calendarWeekdayView.weekdayLabels[2].text = "火"
@@ -48,8 +51,11 @@ final class HealthCheckViewController: UIViewController {
         calendar.calendarWeekdayView.weekdayLabels[4].text = "木"
         calendar.calendarWeekdayView.weekdayLabels[5].text = "金"
         calendar.calendarWeekdayView.weekdayLabels[6].text = "土"
+//        calendar.appearance.headerTitleColor = colors.bluePurple
+//        calendar.appearance.weekdayTextColor = colors.bluePurple
         scrollView.addSubview(calendar)
 
+        
     }
     
     private func setUpHealthCheck() {
@@ -88,7 +94,7 @@ final class HealthCheckViewController: UIViewController {
         healthCheckImage(parentView: uiView5, imageName: "check5")
         healthCheckLabel(parentView: uiView5, text: "だるさがひどい")
         healthCheckSwitch(parentView: uiView5, action: #selector(switchAction))
-
+        
     }
     
     
@@ -160,7 +166,46 @@ final class HealthCheckViewController: UIViewController {
     @objc func resultButtonAction() {
         print("診断完了")
     }
-
-
+    
+    
     
 }
+
+extension HealthCheckViewController: FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance {
+    
+    private func calendar1(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fileDefauliColorFor date: Date) -> UIColor {
+        // カレンダーの各日付==今日の日付
+        if dateFormatter(day: date) == dateFormatter(day: Date()) {
+            return colors.bluePurple
+        }
+        return .clear
+    }
+    
+    private func calendar2(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderDefaulCoLorFor date: Date) -> UIColor {
+        // カレンダーの各日付==今日の日付
+        if dateFormatter(day: date) == dateFormatter(day: Date()) {
+            return colors.bluePurple
+        }
+        return .clear
+    }
+    
+    private func calendar3(_ calendar: FSCalendar, appearance: FSCalendarAppearance, boderRadiusFor date: Date) -> CGFloat {
+        return 0.5
+    }
+    
+    private func calendar4(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefauitColorFor date: Date) -> UIColor {
+        return colors.black
+    }
+    
+    // Date型の日付情報
+    func dateFormatter(day: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY年MM月"
+        return formatter.string(from: day)
+//         yyyy-MM-dd
+
+    }
+    
+    
+}
+
