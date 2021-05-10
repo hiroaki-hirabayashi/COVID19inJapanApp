@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FSCalendar
 
 class HealthCheckViewController: UIViewController {
 
@@ -20,6 +21,10 @@ class HealthCheckViewController: UIViewController {
         // スクロールする量
         scrollView.contentSize = CGSize(width: view.frame.size.width, height: 1000)
         view.addSubview(scrollView)
+        
+        let calendar = FSCalendar()
+        calendar.frame = CGRect(x: 20, y: 10, width: view.frame.size.width - 40, height: 300)
+        scrollView.addSubview(calendar)
     }
     
 
