@@ -43,16 +43,10 @@ final class HealthCheckViewController: UIViewController {
         view.backgroundColor = .systemGroupedBackground
 
         calendar.frame = CGRect(x: 20, y: 10, width: view.frame.size.width - 40, height: 300)
+        calendar.locale = Locale(identifier: "Ja")
         calendar.appearance.headerDateFormat = "yyyy年MM月dd日"
-        calendar.calendarWeekdayView.weekdayLabels[0].text = "日"
-        calendar.calendarWeekdayView.weekdayLabels[1].text = "月"
-        calendar.calendarWeekdayView.weekdayLabels[2].text = "火"
-        calendar.calendarWeekdayView.weekdayLabels[3].text = "水"
-        calendar.calendarWeekdayView.weekdayLabels[4].text = "木"
-        calendar.calendarWeekdayView.weekdayLabels[5].text = "金"
-        calendar.calendarWeekdayView.weekdayLabels[6].text = "土"
-//        calendar.appearance.headerTitleColor = colors.bluePurple
-//        calendar.appearance.weekdayTextColor = colors.bluePurple
+        calendar.appearance.headerTitleColor = colors.bluePurple
+        calendar.appearance.weekdayTextColor = colors.bluePurple
         scrollView.addSubview(calendar)
 
         
@@ -173,7 +167,11 @@ final class HealthCheckViewController: UIViewController {
 
 extension HealthCheckViewController: FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance {
     
-    private func calendar1(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fileDefauliColorFor date: Date) -> UIColor {
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
+        return .clear
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderDefaultColorFor date: Date) -> UIColor? {
         // カレンダーの各日付==今日の日付
         if dateFormatter(day: date) == dateFormatter(day: Date()) {
             return colors.bluePurple
@@ -181,31 +179,34 @@ extension HealthCheckViewController: FSCalendarDataSource, FSCalendarDelegate, F
         return .clear
     }
     
-    private func calendar2(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderDefaulCoLorFor date: Date) -> UIColor {
-        // カレンダーの各日付==今日の日付
-        if dateFormatter(day: date) == dateFormatter(day: Date()) {
-            return colors.bluePurple
-        }
-        return .clear
-    }
-    
-    private func calendar3(_ calendar: FSCalendar, appearance: FSCalendarAppearance, boderRadiusFor date: Date) -> CGFloat {
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderRadiusFor date: Date) -> CGFloat {
         return 0.5
     }
     
-    private func calendar4(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefauitColorFor date: Date) -> UIColor {
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
+        if judgeWeekday(date) == 1 {
+            return UIColor(red: 150/255, green: 30/255, blue: 0/255, alpha: 0.9)
+        } else if judgeWeekday(date) == 7 {
+            return UIColor(red: 0/255, green: 30/255, blue: 155/255, alpha: 0.9)
+        }
         return colors.black
     }
     
     // Date型の日付情報
     func dateFormatter(day: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY年MM月"
+        formatter.dateFormat = "yyyy-MM-dd"
+
         return formatter.string(from: day)
 //         yyyy-MM-dd
-
+    }
+    // 曜日判定(日曜日:1 土曜日:7) gregorian グレゴリオ暦(西暦)
+    func judgeWeekday(_ date: Date) -> Int {
+        let calendar = Calendar(identifier: .gregorian)
+        return calendar.component(.weekday, from: date)
     }
     
+
     
 }
 
