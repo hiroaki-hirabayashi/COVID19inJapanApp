@@ -15,6 +15,7 @@ final class HealthCheckViewController: UIViewController {
     private let scrollView = UIScrollView()
     private let calendar = FSCalendar()
     
+    private var point = 0
     
     
     override func viewDidLoad() {
@@ -152,10 +153,11 @@ final class HealthCheckViewController: UIViewController {
     // Selector型で呼び出す関数には@objc
     @objc func switchAction(sender: UISwitch) {
         if sender.isOn {
-            print("ON")
+            point += 1
         }  else {
-            print("OFF")
+            point -= 1
         }
+        print("point: \(point)")
     }
     
     @objc func resultButtonAction() {
