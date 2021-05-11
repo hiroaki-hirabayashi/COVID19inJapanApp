@@ -7,6 +7,7 @@
 
 import UIKit
 import FSCalendar
+import CalculateCalendarLogic
 
 final class HealthCheckViewController: UIViewController {
     
@@ -189,6 +190,11 @@ extension HealthCheckViewController: FSCalendarDataSource, FSCalendarDelegate, F
         } else if judgeWeekday(date) == 7 {
             return UIColor(red: 0/255, green: 30/255, blue: 155/255, alpha: 0.9)
         }
+        
+        if judgeHoliday(date) {
+            return UIColor(red: 150/255, green: 30/255, blue: 0/255, alpha: 0.9)
+        }
+        
         return colors.black
     }
     
@@ -204,6 +210,17 @@ extension HealthCheckViewController: FSCalendarDataSource, FSCalendarDelegate, F
     func judgeWeekday(_ date: Date) -> Int {
         let calendar = Calendar(identifier: .gregorian)
         return calendar.component(.weekday, from: date)
+    }
+    // 祝日かどうか判定
+    func judgeHoliday(_ date: Date) -> Bool {
+        let calendar = Calendar(identifier: .gregorian)
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
+        let day = calendar.component(.day, from: date)
+        let holiday = CalculateCalendarLogic()
+        let judgeHoliday = holiday.judgeJapaneseHoliday(year: year, month: month, day: day)
+        return judgeHoliday
+        
     }
     
 
