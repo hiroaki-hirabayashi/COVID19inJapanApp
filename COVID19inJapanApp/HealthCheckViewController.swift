@@ -16,17 +16,20 @@ final class HealthCheckViewController: UIViewController {
     private let calendar = FSCalendar()
     
     private var point = 0
+    private var todaysDate = ""
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        calendar.delegate = self
+        todaysDate = dateFormatter(day: Date())
+        
         setUpScrollView()
         setUpCalendar()
         setUpHealthCheck()
         setUpResultButton()
-        calendar.delegate = self
-
+        
         
     }
     
@@ -161,6 +164,39 @@ final class HealthCheckViewController: UIViewController {
     }
     
     @objc func resultButtonAction() {
+        let alert = UIAlertController(title: "診断を完了しますか？", message: "診断は1日に1回までです。", preferredStyle: .actionSheet)
+      
+        // handler ボタンを押した時の処理
+        let yesAction = UIAlertAction(title: "完了", style: .default) { action in
+            var resultTitle = ""
+            var resultMessage = ""
+            
+            if self.point >= 4 {
+                resultTitle = "高"
+                resultMessage = "感染している可能性が\n比較的高いです。\nPCR検査をしましょう。"
+            } else if self.point >= 2 {
+                resultTitle = "中"
+                resultMessage = "怪しい状態です。外出は控えましょう。"
+            } else {
+                resultTitle = "低"
+                resultMessage = "今現在は感染している可能性は低いです。\n今後も気をつけましょう。"
+            }
+            let alert = UIAlertController(title: "感染している可能性「\(resultTitle)」", message: resultMessage, preferredStyle: .alert)
+            self.present(alert, animated: true, completion: {
+                // 遅延処理 5秒後に処理を始める
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                    //5秒後の処理 alertを消す
+                    self.dismiss(animated: true, completion: nil)
+                }
+            })
+            
+        }
+        
+        let noAction = UIAlertAction(title: "キャンセル", style: .destructive, handler: nil)
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
+        // completion アラートを表示したあとの処理
+        present(alert, animated: true, completion: nil)
         print("診断完了")
     }
     
@@ -175,8 +211,9 @@ extension HealthCheckViewController: FSCalendarDataSource, FSCalendarDelegate, F
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderDefaultColorFor date: Date) -> UIColor? {
-        // カレンダーの各日付==今日の日付
-        if dateFormatter(day: date) == dateFormatter(day: Date()) {
+        // カレンダーの各日付 == 今日の日付 dateFormatter(day: Date())でも良いけど計算処理になる
+        // 今回は参照処理
+        if dateFormatter(day: date) == todaysDate {
             return colors.bluePurple
         }
         return .clear
