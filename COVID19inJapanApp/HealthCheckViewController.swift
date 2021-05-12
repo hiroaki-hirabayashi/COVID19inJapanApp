@@ -17,12 +17,13 @@ final class HealthCheckViewController: UIViewController {
     
     private var point = 0
     private var todaysDate = ""
+    private var fixedReleaseFlag = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         calendar.delegate = self
+        calendar.dataSource = self
         todaysDate = dateFormatter(day: Date())
         
         setUpScrollView()
@@ -30,6 +31,7 @@ final class HealthCheckViewController: UIViewController {
         setUpHealthCheck()
         setUpResultButton()
         
+       
         
     }
     
@@ -53,8 +55,6 @@ final class HealthCheckViewController: UIViewController {
         calendar.appearance.headerTitleColor = colors.bluePurple
         calendar.appearance.weekdayTextColor = colors.bluePurple
         scrollView.addSubview(calendar)
-
-        
     }
     
     private func setUpHealthCheck() {
@@ -73,27 +73,36 @@ final class HealthCheckViewController: UIViewController {
         healthCheckImage(parentView: uiView1, imageName: "check1")
         healthCheckLabel(parentView: uiView1, text: "37.5度以上の熱がある")
         healthCheckSwitch(parentView: uiView1, action: #selector(switchAction))
+        
         let uiView2 = healthCheckView(y: 465)
         scrollView.addSubview(uiView2)
         healthCheckImage(parentView: uiView2, imageName: "check2")
         healthCheckLabel(parentView: uiView2, text: "喉の痛みがある")
         healthCheckSwitch(parentView: uiView2, action: #selector(switchAction))
+        
         let uiView3 = healthCheckView(y: 550)
         scrollView.addSubview(uiView3)
         healthCheckImage(parentView: uiView3, imageName: "check3")
         healthCheckLabel(parentView: uiView3, text: "匂いを感じない")
         healthCheckSwitch(parentView: uiView3, action: #selector(switchAction))
+        
         let uiView4 = healthCheckView(y: 635)
         scrollView.addSubview(uiView4)
         healthCheckImage(parentView: uiView4, imageName: "check4")
         healthCheckLabel(parentView: uiView4, text: "味が薄く感じる")
         healthCheckSwitch(parentView: uiView4, action: #selector(switchAction))
+        
         let uiView5 = healthCheckView(y: 720)
         scrollView.addSubview(uiView5)
         healthCheckImage(parentView: uiView5, imageName: "check5")
         healthCheckLabel(parentView: uiView5, text: "だるさがひどい")
         healthCheckSwitch(parentView: uiView5, action: #selector(switchAction))
         
+        let uiView6 = healthCheckView(y: 805)
+        scrollView.addSubview(uiView6)
+        healthCheckLabel(parentView: uiView6, text: "回数解除中 ONで制限")
+//        healthCheckSwitch(parentView: uiView6, action: #selector(fixedRelease))
+
     }
     
     
@@ -139,7 +148,7 @@ final class HealthCheckViewController: UIViewController {
     
     private func setUpResultButton() {
         let resultButton = UIButton()
-        resultButton.frame = CGRect(x: 0, y: 820, width: 200, height: 40)
+        resultButton.frame = CGRect(x: 0, y: 900, width: 200, height: 40)
         //resultButtonの中心をscrollViewの中心に
         resultButton.center.x = scrollView.center.x
         resultButton.titleLabel?.font = .systemFont(ofSize: 20)
@@ -167,7 +176,7 @@ final class HealthCheckViewController: UIViewController {
         let alert = UIAlertController(title: "診断を完了しますか？", message: "診断は1日に1回までです。", preferredStyle: .actionSheet)
       
         // handler ボタンを押した時の処理
-        let yesAction = UIAlertAction(title: "完了", style: .default) { action in
+        let yesAction = UIAlertAction(title: "完了", style: .default) { [self] action in
             var resultTitle = ""
             var resultMessage = ""
             
@@ -189,6 +198,10 @@ final class HealthCheckViewController: UIViewController {
                     self.dismiss(animated: true, completion: nil)
                 }
             })
+            // 診断結果を保存
+            UserDefaults.standard.set(resultTitle, forKey: self.todaysDate)
+            
+           
             
         }
         
@@ -200,7 +213,30 @@ final class HealthCheckViewController: UIViewController {
         print("診断完了")
     }
     
-    
+    // 後で考える
+//    if fixedReleaseFlag == false {
+//        return
+//    } else if fixedReleaseFlag == true {
+//        print("あと少し")
+//        if UserDefaults.standard.string(forKey: todaysDate) != nil {
+//            resultButton.isEnabled = false
+//            resultButton.setTitle("診断済み", for:  .normal)
+//            resultButton.backgroundColor = .white
+//            resultButton.setTitleColor(.gray, for: .normal)
+//        }
+//    }
+//
+//    @objc func fixedRelease(sender: UISwitch) {
+//        if sender.isOn {
+//            fixedReleaseFlag = true
+//            print("ON")
+//        } else {
+//            fixedReleaseFlag = false
+//            print("OFF")
+//        }
+//
+//    }
+//
     
 }
 
@@ -235,6 +271,19 @@ extension HealthCheckViewController: FSCalendarDataSource, FSCalendarDelegate, F
         }
         
         return colors.black
+    }
+    // オプショナル カレンダーの各日付をキーにして検索し、診断結果が存在したらresultに代入する
+    // 診断結果があればreturn 無ければ空文字をreturn
+    func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
+        if let result = UserDefaults.standard.string(forKey: dateFormatter(day: date)) {
+            return result
+        }
+        return ""
+    }
+    // ↑のサブタイトルの色
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, subtitleDefaultColorFor date: Date) -> UIColor? {
+        return .init(red: 0, green: 0, blue: 0, alpha: 0.7)
+        
     }
     
     // Date型の日付情報
