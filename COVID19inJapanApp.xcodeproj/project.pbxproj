@@ -14,6 +14,8 @@
 		F46397592643B7920031C4EA /* WebAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46397582643B7920031C4EA /* WebAPI.swift */; };
 		F46397802648A6180031C4EA /* HealthCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463977F2648A6180031C4EA /* HealthCheckViewController.swift */; };
 		F46397852648A6840031C4EA /* HealthCheck.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46397842648A6840031C4EA /* HealthCheck.storyboard */; };
+		F4639790264C0A4B0031C4EA /* ChartView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F463978F264C0A4B0031C4EA /* ChartView.storyboard */; };
+		F4639795264C0A750031C4EA /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4639794264C0A750031C4EA /* ChartViewController.swift */; };
 		F4DAC01126416FF200330870 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DAC01026416FF200330870 /* AppDelegate.swift */; };
 		F4DAC01326416FF200330870 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DAC01226416FF200330870 /* SceneDelegate.swift */; };
 		F4DAC01526416FF200330870 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DAC01426416FF200330870 /* TopViewController.swift */; };
@@ -57,6 +59,8 @@
 		F46397582643B7920031C4EA /* WebAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPI.swift; sourceTree = "<group>"; };
 		F463977F2648A6180031C4EA /* HealthCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthCheckViewController.swift; sourceTree = "<group>"; };
 		F46397842648A6840031C4EA /* HealthCheck.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HealthCheck.storyboard; sourceTree = "<group>"; };
+		F463978F264C0A4B0031C4EA /* ChartView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChartView.storyboard; sourceTree = "<group>"; };
+		F4639794264C0A750031C4EA /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		F4DAC00D26416FF200330870 /* COVID19inJapanApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = COVID19inJapanApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4DAC01026416FF200330870 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4DAC01226416FF200330870 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +130,38 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		F4639799264C0A840031C4EA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F4DAC01626416FF200330870 /* Main.storyboard */,
+				F46397842648A6840031C4EA /* HealthCheck.storyboard */,
+				F463978F264C0A4B0031C4EA /* ChartView.storyboard */,
+				F4DAC01E26416FF400330870 /* LaunchScreen.storyboard */,
+				F4DAC01C26416FF400330870 /* Assets.xcassets */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F463979A264C0A9A0031C4EA /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F4DAC01426416FF200330870 /* TopViewController.swift */,
+				F463977F2648A6180031C4EA /* HealthCheckViewController.swift */,
+				F4639794264C0A750031C4EA /* ChartViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F463979B264C0B1D0031C4EA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F4DAC04926418CF800330870 /* Colors.swift */,
+				F463975326436D150031C4EA /* Entity.swift */,
+				F46397582643B7920031C4EA /* WebAPI.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		F4DAC00426416FF200330870 = {
 			isa = PBXGroup;
 			children = (
@@ -151,19 +187,13 @@
 		F4DAC00F26416FF200330870 /* COVID19inJapanApp */ = {
 			isa = PBXGroup;
 			children = (
+				F463979B264C0B1D0031C4EA /* Extension */,
+				F463979A264C0A9A0031C4EA /* ViewController */,
+				F4639799264C0A840031C4EA /* View */,
 				F4DAC01026416FF200330870 /* AppDelegate.swift */,
 				F4DAC01226416FF200330870 /* SceneDelegate.swift */,
-				F4DAC01426416FF200330870 /* TopViewController.swift */,
-				F4DAC04926418CF800330870 /* Colors.swift */,
-				F463975326436D150031C4EA /* Entity.swift */,
-				F46397582643B7920031C4EA /* WebAPI.swift */,
-				F4DAC01626416FF200330870 /* Main.storyboard */,
-				F4DAC01C26416FF400330870 /* Assets.xcassets */,
-				F4DAC01E26416FF400330870 /* LaunchScreen.storyboard */,
 				F4DAC02126416FF400330870 /* Info.plist */,
 				F4DAC01926416FF200330870 /* COVID19inJapanApp.xcdatamodeld */,
-				F463977F2648A6180031C4EA /* HealthCheckViewController.swift */,
-				F46397842648A6840031C4EA /* HealthCheck.storyboard */,
 			);
 			path = COVID19inJapanApp;
 			sourceTree = "<group>";
@@ -295,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4DAC02026416FF400330870 /* LaunchScreen.storyboard in Resources */,
+				F4639790264C0A4B0031C4EA /* ChartView.storyboard in Resources */,
 				F46397852648A6840031C4EA /* HealthCheck.storyboard in Resources */,
 				F4DAC01D26416FF400330870 /* Assets.xcassets in Resources */,
 				F4DAC01826416FF200330870 /* Main.storyboard in Resources */,
@@ -430,6 +461,7 @@
 				F463975426436D150031C4EA /* Entity.swift in Sources */,
 				F4DAC01126416FF200330870 /* AppDelegate.swift in Sources */,
 				F4DAC01326416FF200330870 /* SceneDelegate.swift in Sources */,
+				F4639795264C0A750031C4EA /* ChartViewController.swift in Sources */,
 				F46397802648A6180031C4EA /* HealthCheckViewController.swift in Sources */,
 				F46397592643B7920031C4EA /* WebAPI.swift in Sources */,
 				F4DAC01B26416FF200330870 /* COVID19inJapanApp.xcdatamodeld in Sources */,
