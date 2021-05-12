@@ -77,7 +77,7 @@ class TopViewController: UIViewController {
          */
         let height = view.frame.size.height / 2
         setUpButton("健康管理", size: labelSize, y: height + 190, color: colors.blue, parentView: view).addTarget(self, action: #selector(goHealthCheck), for: .touchDown)
-        setUpButton("県別状況", size: labelSize, y: height + 240, color: colors.blue, parentView: view)
+        setUpButton("県別状況", size: labelSize, y: height + 240, color: colors.blue, parentView: view).addTarget(self, action: #selector(goChart), for: .touchDown)
         
         let imageView = UIImageView()
         let image = UIImage(named: "virus")
@@ -216,8 +216,15 @@ class TopViewController: UIViewController {
     
     @objc func goHealthCheck() {
         let storyboard = UIStoryboard(name: "HealthCheck", bundle: nil)
-        let HealthCheckViewController = storyboard.instantiateViewController(withIdentifier: "HealthCheckViewController") as! HealthCheckViewController
-        self.navigationController?.pushViewController(HealthCheckViewController, animated: true)
+        let healthCheckViewController = storyboard.instantiateViewController(withIdentifier: "goHealthCheck") as! HealthCheckViewController
+        self.navigationController?.pushViewController(healthCheckViewController, animated: true)
     }
+    
+    @objc func goChart() {
+        let storyboard = UIStoryboard(name: "ChartView", bundle: nil)
+        let chartViewController = storyboard.instantiateViewController(withIdentifier: "goChart") as! ChartViewController
+        self.navigationController?.pushViewController(chartViewController, animated: true)
+    }
+    
     
 }

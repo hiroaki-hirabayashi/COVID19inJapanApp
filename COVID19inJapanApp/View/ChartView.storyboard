@@ -12,7 +12,7 @@
         <!--Chart View Controller-->
         <scene sceneID="eNk-hl-ZUA">
             <objects>
-                <viewController id="xgb-nv-1SR" customClass="ChartViewController" customModule="COVID19inJapanApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="goChart" id="xgb-nv-1SR" customClass="ChartViewController" customModule="COVID19inJapanApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dHd-WF-Kjb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
