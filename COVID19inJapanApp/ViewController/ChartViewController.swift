@@ -57,6 +57,15 @@ final class ChartViewController: UIViewController {
         
         view.backgroundColor = .systemGroupedBackground
         
+        let uiView = UIView()
+        uiView.frame = CGRect(x: 10, y: 400, width: view.frame.size.width - 20, height: 167)
+        uiView.backgroundColor = .white
+        uiView.layer.cornerRadius = 10
+        uiView.layer.shadowColor = colors.black.cgColor
+        uiView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        uiView.layer.shadowOpacity = 0.4
+        uiView.layer.shadowRadius = 10
+        view.addSubview(uiView)
     }
     
     @objc func goCircle() {
