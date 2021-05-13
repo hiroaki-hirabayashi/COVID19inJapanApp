@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ChartViewController: UIViewController {
+final class ChartViewController: UIViewController {
 
-    let colors = Colors()
+    private let colors = Colors()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +46,17 @@ class ChartViewController: UIViewController {
         segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: colors.bluePurple], for: .normal)
         segment.addTarget(self, action: #selector(segmentSwitchAction), for: .valueChanged)
         view.addSubview(segment)
+        
+        let searchBar = UISearchBar()
+        searchBar.delegate = self
+        searchBar.frame = CGRect(x: 10, y: 100, width: view.frame.size.width - 20, height: 20)
+        searchBar.placeholder = "都道県を入力"
+        searchBar.showsCancelButton = true
+        searchBar.tintColor = colors.blue
+        view.addSubview(searchBar)
+        
+        view.backgroundColor = .systemGroupedBackground
+        
     }
     
     @objc func goCircle() {
@@ -64,16 +75,16 @@ class ChartViewController: UIViewController {
                 break
         }
     }
+}
+
+//MARK: UISearchBarDelegate
+extension ChartViewController: UISearchBarDelegate {
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("検索ボタン")
     }
-    */
-
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        print("キャンセルボタン")
+    }
 }

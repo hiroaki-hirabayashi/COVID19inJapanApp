@@ -240,6 +240,7 @@ final class HealthCheckViewController: UIViewController {
     
 }
 
+//MARK: FSCalendarDelegate
 extension HealthCheckViewController: FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance {
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {

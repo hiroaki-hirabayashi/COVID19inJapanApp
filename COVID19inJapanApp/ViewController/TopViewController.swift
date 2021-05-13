@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 
-class TopViewController: UIViewController {
+final class TopViewController: UIViewController {
     
-    let colors = Colors()
+    private let colors = Colors()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +18,7 @@ class TopViewController: UIViewController {
         setUpContent()
     }
     
-    func setUpGradation() {
+    private func setUpGradation() {
         // 画面上部
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height / 2 )
@@ -36,7 +36,7 @@ class TopViewController: UIViewController {
          */
     }
     
-    func setUpContent() {
+    private func setUpContent() {
         // 画面中央部
         let contentView = UIView()
         // size
@@ -100,7 +100,7 @@ class TopViewController: UIViewController {
     }
     
     // 表示する項目のラベル、文字
-    func setUpLabel(_ text: String, size: CGSize, centerX: CGFloat, y: CGFloat, font: UIFont, color: UIColor, _ parentView: UIView) {
+    private func setUpLabel(_ text: String, size: CGSize, centerX: CGFloat, y: CGFloat, font: UIFont, color: UIColor, _ parentView: UIView) {
         let label = UILabel()
         // 表示するテキスト
         label.text = text
@@ -118,7 +118,7 @@ class TopViewController: UIViewController {
     }
     
     // データを表示するためのラベルを配置する
-    func setUpAPILabel(_ label: UILabel, size: CGSize, centerX: CGFloat, y: CGFloat, font: UIFont, color: UIColor, _ parentView: UIView) {
+    private func setUpAPILabel(_ label: UILabel, size: CGSize, centerX: CGFloat, y: CGFloat, font: UIFont, color: UIColor, _ parentView: UIView) {
         label.frame.size = size
         label.center.x = centerX
         label.frame.origin.y = y
@@ -127,7 +127,7 @@ class TopViewController: UIViewController {
         parentView.addSubview(label)
     }
     
-    func setUpAPI(parentView: UIView) {
+    private func setUpAPI(parentView: UIView) {
         let pcr = UILabel()
         let positive = UILabel()
         let hospitalize = UILabel()
@@ -171,7 +171,7 @@ class TopViewController: UIViewController {
         }
     }
     
-    func setUpButton(_ title: String, size: CGSize, y: CGFloat, color: UIColor, parentView: UIView) -> UIButton {
+    private func setUpButton(_ title: String, size: CGSize, y: CGFloat, color: UIColor, parentView: UIView) -> UIButton {
         let button = UIButton(type: .system)
         button.setTitle(title, for: .normal)
         button.frame.size = size
@@ -191,7 +191,7 @@ class TopViewController: UIViewController {
     }
     
     // チャットボタン returnで呼び出し元にButtonを返す
-    func setUpImageButton(_ name: String, x: CGFloat) -> UIButton {
+    private func setUpImageButton(_ name: String, x: CGFloat) -> UIButton {
         let button = UIButton(type: .system)
         // UIImageインスタンス、ボタン状態
         button.setImage(UIImage(named: name), for: .normal)
