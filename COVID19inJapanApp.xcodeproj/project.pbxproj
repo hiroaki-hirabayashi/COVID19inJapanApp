@@ -17,6 +17,8 @@
 		F4639790264C0A4B0031C4EA /* ChartView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F463978F264C0A4B0031C4EA /* ChartView.storyboard */; };
 		F4639795264C0A750031C4EA /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4639794264C0A750031C4EA /* ChartViewController.swift */; };
 		F46397A8264D5E400031C4EA /* CircleChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46397A7264D5E400031C4EA /* CircleChartViewController.swift */; };
+		F46397AE264D5F190031C4EA /* CircleChartView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46397AD264D5F190031C4EA /* CircleChartView.storyboard */; };
+		F46397B6264D6B3F0031C4EA /* CovidSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46397B5264D6B3F0031C4EA /* CovidSingleton.swift */; };
 		F4DAC01126416FF200330870 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DAC01026416FF200330870 /* AppDelegate.swift */; };
 		F4DAC01326416FF200330870 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DAC01226416FF200330870 /* SceneDelegate.swift */; };
 		F4DAC01526416FF200330870 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DAC01426416FF200330870 /* TopViewController.swift */; };
@@ -63,6 +65,8 @@
 		F463978F264C0A4B0031C4EA /* ChartView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChartView.storyboard; sourceTree = "<group>"; };
 		F4639794264C0A750031C4EA /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		F46397A7264D5E400031C4EA /* CircleChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleChartViewController.swift; sourceTree = "<group>"; };
+		F46397AD264D5F190031C4EA /* CircleChartView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CircleChartView.storyboard; sourceTree = "<group>"; };
+		F46397B5264D6B3F0031C4EA /* CovidSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidSingleton.swift; sourceTree = "<group>"; };
 		F4DAC00D26416FF200330870 /* COVID19inJapanApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = COVID19inJapanApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4DAC01026416FF200330870 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4DAC01226416FF200330870 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +142,7 @@
 				F4DAC01626416FF200330870 /* Main.storyboard */,
 				F46397842648A6840031C4EA /* HealthCheck.storyboard */,
 				F463978F264C0A4B0031C4EA /* ChartView.storyboard */,
+				F46397AD264D5F190031C4EA /* CircleChartView.storyboard */,
 				F4DAC01E26416FF400330870 /* LaunchScreen.storyboard */,
 				F4DAC01C26416FF400330870 /* Assets.xcassets */,
 			);
@@ -161,6 +166,7 @@
 				F4DAC04926418CF800330870 /* Colors.swift */,
 				F463975326436D150031C4EA /* Entity.swift */,
 				F46397582643B7920031C4EA /* WebAPI.swift */,
+				F46397B5264D6B3F0031C4EA /* CovidSingleton.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -328,6 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4DAC02026416FF400330870 /* LaunchScreen.storyboard in Resources */,
+				F46397AE264D5F190031C4EA /* CircleChartView.storyboard in Resources */,
 				F4639790264C0A4B0031C4EA /* ChartView.storyboard in Resources */,
 				F46397852648A6840031C4EA /* HealthCheck.storyboard in Resources */,
 				F4DAC01D26416FF400330870 /* Assets.xcassets in Resources */,
@@ -467,6 +474,7 @@
 				F4639795264C0A750031C4EA /* ChartViewController.swift in Sources */,
 				F46397802648A6180031C4EA /* HealthCheckViewController.swift in Sources */,
 				F46397A8264D5E400031C4EA /* CircleChartViewController.swift in Sources */,
+				F46397B6264D6B3F0031C4EA /* CovidSingleton.swift in Sources */,
 				F46397592643B7920031C4EA /* WebAPI.swift in Sources */,
 				F4DAC01B26416FF200330870 /* COVID19inJapanApp.xcdatamodeld in Sources */,
 			);

@@ -29,4 +29,21 @@ struct Covid19API {
             }
         }.resume()
     }
+    //47個データが返ってくるため配列[]にする
+    static func getPrefecture(completion: @escaping ([CovidInfo.Prefecture]) -> Void) {
+        let url = URL(string: "https://covid19-japan-web-api.now.sh/api/v1/prefectures")
+        let request = URLRequest(url: url!)
+        URLSession.shared.dataTask(with: request) { (data, respons, error) in
+            if let data = data {
+                let result = try! JSONDecoder().decode([CovidInfo.Prefecture].self, from: data)
+                completion(result)
+            }
+        }.resume()
+        
+        
+    }
+    
+    
 }
+
+

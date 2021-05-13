@@ -11,6 +11,18 @@ final class ChartViewController: UIViewController {
 
     private let colors = Colors()
     private let uiView = UIView()
+    
+    // 都道府県
+    var prefecturs = UILabel()
+    // PCR
+    var pcr = UILabel()
+    var pcrCount = UILabel()
+    // 感染者
+    var cases = UILabel()
+    var casesCount = UILabel()
+    // 死者数
+    var deaths = UILabel()
+    var deathsCount = UILabel()
 
     
     override func viewDidLoad() {
@@ -21,14 +33,24 @@ final class ChartViewController: UIViewController {
         setUpSearchBar()
         setUpUIView()
         // 真ん中に表示するものはx=1、左側はx=0.39、右側はx=1.61 3等分
-        bottomLabel(uiView, 1, 10, text: "東京", size: 30, weight: .ultraLight, color: colors.black)
-        bottomLabel(uiView, 0.39, 50, text: "PCR数", size: 15, weight: .bold, color: colors.bluePurple)
-        bottomLabel(uiView, 0.39, 85, text: "222222", size: 30, weight: .bold, color: colors.blue)
-        bottomLabel(uiView, 1, 50, text: "感染者数", size: 15, weight: .bold, color: colors.bluePurple)
-        bottomLabel(uiView, 1,  85, text: "22222", size: 30, weight: .bold, color: colors.blue)
-        bottomLabel(uiView, 1.61, 50, text: "死者数", size: 15, weight: .bold, color: colors.bluePurple)
-        bottomLabel(uiView, 1.61, 85, text: "2222", size: 30, weight: .bold, color: colors.blue)
+        bottomLabel(uiView, prefecturs, 1, 10, text: "都道府県", size: 30, weight: .ultraLight, color: colors.black)
+        bottomLabel(uiView, pcr, 0.39, 50, text: "PCR数", size: 15, weight: .bold, color: colors.bluePurple)
+        bottomLabel(uiView, pcrCount, 0.39, 85, text: "0", size: 30, weight: .bold, color: colors.blue)
+        bottomLabel(uiView, cases, 1, 50, text: "感染者数", size: 15, weight: .bold, color: colors.bluePurple)
+        bottomLabel(uiView, casesCount, 1,  85, text: "0", size: 30, weight: .bold, color: colors.blue)
+        bottomLabel(uiView, deaths, 1.61, 50, text: "死者数", size: 15, weight: .bold, color: colors.bluePurple)
+        bottomLabel(uiView, deathsCount, 1.61, 85, text: "0", size: 30, weight: .bold, color: colors.blue)
         view.backgroundColor = .systemGroupedBackground
+        
+        for i in 0 ..< CovidSingleton.shared.prefecture.count {
+            if CovidSingleton.shared.prefecture[i].name_ja == "東京" {
+                prefecturs.text = CovidSingleton.shared.prefecture[i].name_ja
+                pcrCount.text = "\(CovidSingleton.shared.prefecture[i].pcr)"
+                casesCount.text = "\(CovidSingleton.shared.prefecture[i].cases)"
+                deathsCount.text = "\(CovidSingleton.shared.prefecture[i].deaths)"
+                
+            }
+        }
 
     }
     private func gradientLayer() {
@@ -92,9 +114,10 @@ final class ChartViewController: UIViewController {
         view.addSubview(uiView)
     }
     
-    private func bottomLabel(_ parentView: UIView, _ x: CGFloat, _ y: CGFloat, text: String, size: CGFloat, weight: UIFont.Weight, color: UIColor) {
+    private func bottomLabel(_ parentView: UIView, _ label: UILabel, _ x: CGFloat, _ y: CGFloat, text: String, size: CGFloat, weight: UIFont.Weight, color: UIColor) {
         view.backgroundColor = .systemGroupedBackground
-        let label = UILabel()
+        // ここでラベルを生成すると参照出来ない
+        //        let label = UILabel()
         label.text = text
         label.textColor = color
         label.textAlignment = .center
