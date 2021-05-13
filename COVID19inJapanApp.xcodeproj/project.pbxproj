@@ -16,6 +16,7 @@
 		F46397852648A6840031C4EA /* HealthCheck.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46397842648A6840031C4EA /* HealthCheck.storyboard */; };
 		F4639790264C0A4B0031C4EA /* ChartView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F463978F264C0A4B0031C4EA /* ChartView.storyboard */; };
 		F4639795264C0A750031C4EA /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4639794264C0A750031C4EA /* ChartViewController.swift */; };
+		F46397A8264D5E400031C4EA /* CircleChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46397A7264D5E400031C4EA /* CircleChartViewController.swift */; };
 		F4DAC01126416FF200330870 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DAC01026416FF200330870 /* AppDelegate.swift */; };
 		F4DAC01326416FF200330870 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DAC01226416FF200330870 /* SceneDelegate.swift */; };
 		F4DAC01526416FF200330870 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DAC01426416FF200330870 /* TopViewController.swift */; };
@@ -61,6 +62,7 @@
 		F46397842648A6840031C4EA /* HealthCheck.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HealthCheck.storyboard; sourceTree = "<group>"; };
 		F463978F264C0A4B0031C4EA /* ChartView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChartView.storyboard; sourceTree = "<group>"; };
 		F4639794264C0A750031C4EA /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		F46397A7264D5E400031C4EA /* CircleChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleChartViewController.swift; sourceTree = "<group>"; };
 		F4DAC00D26416FF200330870 /* COVID19inJapanApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = COVID19inJapanApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4DAC01026416FF200330870 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4DAC01226416FF200330870 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				F4DAC01426416FF200330870 /* TopViewController.swift */,
 				F463977F2648A6180031C4EA /* HealthCheckViewController.swift */,
 				F4639794264C0A750031C4EA /* ChartViewController.swift */,
+				F46397A7264D5E400031C4EA /* CircleChartViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				F4DAC01326416FF200330870 /* SceneDelegate.swift in Sources */,
 				F4639795264C0A750031C4EA /* ChartViewController.swift in Sources */,
 				F46397802648A6180031C4EA /* HealthCheckViewController.swift in Sources */,
+				F46397A8264D5E400031C4EA /* CircleChartViewController.swift in Sources */,
 				F46397592643B7920031C4EA /* WebAPI.swift in Sources */,
 				F4DAC01B26416FF200330870 /* COVID19inJapanApp.xcdatamodeld in Sources */,
 			);
