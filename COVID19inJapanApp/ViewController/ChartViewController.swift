@@ -12,7 +12,6 @@ final class ChartViewController: UIViewController {
 
     private let colors = Colors()
     private let uiView = UIView()
-    
     // 都道府県
     private var prefecturs = UILabel()
     // PCR
@@ -28,9 +27,9 @@ final class ChartViewController: UIViewController {
     private var prefectureArray: [CovidInfo.Prefecture] = []
     // チャート表示
     private var chartView: HorizontalBarChartView?
-    
-    
-
+    private var segment = UISegmentedControl()
+    private var pattern = "cases"
+    private let searchBar = UISearchBar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,7 +84,7 @@ final class ChartViewController: UIViewController {
     }
     
     private func setaUpSegementControl() {
-        let segment = UISegmentedControl(items: ["感染者数", "PCR数", "死者数"])
+        segment = UISegmentedControl(items: ["感染者", "PCR数", "死者数"])
         segment.frame = CGRect(x: 10, y: 70, width: view.frame.size.width - 20, height: 20)
         segment.selectedSegmentTintColor = colors.blue
         segment.selectedSegmentIndex = 0
@@ -96,7 +95,6 @@ final class ChartViewController: UIViewController {
     }
     
     private func setUpSearchBar() {
-        let searchBar = UISearchBar()
         searchBar.delegate = self
         searchBar.frame = CGRect(x: 10, y: 100, width: view.frame.size.width - 20, height: 20)
         searchBar.placeholder = "都道県を入力"
@@ -121,7 +119,7 @@ final class ChartViewController: UIViewController {
     private func bottomLabel(_ parentView: UIView, _ label: UILabel, _ x: CGFloat, _ y: CGFloat, text: String, size: CGFloat, weight: UIFont.Weight, color: UIColor) {
         view.backgroundColor = .systemGroupedBackground
         // ここでラベルを生成すると参照出来ない
-        //        let label = UILabel()
+        //  ✗ → let label = UILabel()
         label.text = text
         label.textColor = color
         label.textAlignment = .center
@@ -147,7 +145,6 @@ final class ChartViewController: UIViewController {
     }
     
     func displayDataSetChartView() {
-        
         let chartView = HorizontalBarChartView(frame: CGRect(x: 0, y: 150, width: view.frame.size.width, height: 300))
         // yAxisDuration 横方向 アニメーション1秒かけてグラフ生成 easingOption アニメーションの種類
         chartView.animate(yAxisDuration: 1.0, easingOption: .easeInCubic)
@@ -168,8 +165,23 @@ final class ChartViewController: UIViewController {
         chartView.legend.enabled = false
         // 右側の軸の表示をしないようにする
         chartView.rightAxis.enabled = false
+        
         prefectureArray = CovidSingleton.shared.prefecture
-
+        // グラフのソート処理
+        prefectureArray.sort(by: {
+            a,b -> Bool in
+            // pcrの値をソート
+            if pattern == "pcr" {
+                return a.pcr > b.pcr
+                //deathsをソート
+            } else if pattern == "deaths" {
+                return a.deaths > b.deaths
+                // それ以外はcasesをソート
+            } else {
+                return a.cases > b.cases
+            }
+        })
+        
         // 縦軸の都道府県名
         var names: [String] = []
         // 10回回してnamesに都道府県名を追加する
@@ -180,9 +192,19 @@ final class ChartViewController: UIViewController {
         chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: names)
         
         var entries: [BarChartDataEntry] = []
-        // x インデックス番号 y 感染者数
+        
         for i in 0 ... 9 {
-            entries += [BarChartDataEntry(x: Double(i), y: Double(prefectureArray[i].cases))]
+            if pattern == "cases" {
+                segment.selectedSegmentIndex = 0
+                entries += [BarChartDataEntry(x: Double(i), y: Double(self.prefectureArray[i].cases))]
+            } else if pattern == "pcr" {
+                segment.selectedSegmentIndex = 1
+                entries += [BarChartDataEntry(x: Double(i), y: Double(self.prefectureArray[i].pcr))]
+            } else if pattern == "deaths" {
+                segment.selectedSegmentIndex = 2
+                entries += [BarChartDataEntry(x: Double(i), y: Double(self.prefectureArray[i].deaths))]
+            }
+            
         }
         
         let set = BarChartDataSet(entries: entries, label: "県別状況データ")
@@ -203,18 +225,21 @@ final class ChartViewController: UIViewController {
     @objc func goCircle() {
         print("goCircle")
     }
-    
+    // どの選択を選んだのかpatternに代入
+    // 画面再構築
     @objc func segmentSwitchAction(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
             case 0:
-                print("感染者数")
+                pattern = "cases"
             case 1:
-                print("PCR数")
+                pattern = "pcr"
             case 2:
-                print("死者数")
+                pattern = "deaths"
             default:
                 break
         }
+        loadView()
+        viewDidLoad()
     }
 }
 
@@ -222,17 +247,38 @@ final class ChartViewController: UIViewController {
 extension ChartViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("検索ボタン")
+        // 編集モード終了 、検索したら自動でキーボードが閉じる
+        view.endEditing(true)
+        // 検索した都道府県がprefectureArrayが存在する時のindexを取得
+        // 配列の要素 $0が検索バーに入力されたテキスト(searchBar.text)と等しい(==)とき
+        if let index = prefectureArray.firstIndex(where: { $0.name_ja == searchBar.text }) {
+            prefecturs.text = "\(prefectureArray[index].name_ja)"
+            pcrCount.text = "\(prefectureArray[index].pcr)"
+            casesCount.text = "\(prefectureArray[index].cases)"
+            deathsCount.text = "\(prefectureArray[index].deaths)"
+        }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        print("キャンセルボタン")
+        view.endEditing(true)
+        // キャンセルボタンでSearchBarを空にする
+        searchBar.text = ""
     }
     
    
 }
-
+// 棒グラフをタップするとUIViewに反映させる
 //MARK: ChartViewDelegate
 extension ChartViewController: ChartViewDelegate {
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        if let dataSet = chartView.data?.dataSets[highlight.dataSetIndex] {
+            let index = dataSet.entryIndex(entry: entry)
+            prefecturs.text = "\(prefectureArray[index].name_ja)"
+            pcrCount.text = "\(prefectureArray[index].pcr)"
+            cases.text = "\(prefectureArray[index].cases)"
+            deaths.text = "\(prefectureArray[index].deaths)"
+        }
+    }
     
 }
+
