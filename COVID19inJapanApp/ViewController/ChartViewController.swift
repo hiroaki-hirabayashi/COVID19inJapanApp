@@ -14,20 +14,27 @@ final class ChartViewController: UIViewController {
     private let uiView = UIView()
     
     // 都道府県
-    var prefecturs = UILabel()
+    private var prefecturs = UILabel()
     // PCR
-    var pcr = UILabel()
-    var pcrCount = UILabel()
+    private var pcr = UILabel()
+    private var pcrCount = UILabel()
     // 感染者
-    var cases = UILabel()
-    var casesCount = UILabel()
+    private var cases = UILabel()
+    private var casesCount = UILabel()
     // 死者数
-    var deaths = UILabel()
-    var deathsCount = UILabel()
+    private var deaths = UILabel()
+    private var deathsCount = UILabel()
+    // 各都道府県データ
+    private var prefectureArray: [CovidInfo.Prefecture] = []
+    // チャート表示
+    private var chartView: HorizontalBarChartView?
+    
+    
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemGroupedBackground
         gradientLayer()
         setUpNextButton()
         setaUpSegementControl()
@@ -41,19 +48,13 @@ final class ChartViewController: UIViewController {
         bottomLabel(uiView, casesCount, 1,  85, text: "0", size: 30, weight: .bold, color: colors.blue)
         bottomLabel(uiView, deaths, 1.61, 50, text: "死者数", size: 15, weight: .bold, color: colors.bluePurple)
         bottomLabel(uiView, deathsCount, 1.61, 85, text: "0", size: 30, weight: .bold, color: colors.blue)
-        view.backgroundColor = .systemGroupedBackground
+        displayDataSetUiVeiw()
+        displayDataSetChartView()
         
-        for i in 0 ..< CovidSingleton.shared.prefecture.count {
-            if CovidSingleton.shared.prefecture[i].name_ja == "東京" {
-                prefecturs.text = CovidSingleton.shared.prefecture[i].name_ja
-                pcrCount.text = "\(CovidSingleton.shared.prefecture[i].pcr)"
-                casesCount.text = "\(CovidSingleton.shared.prefecture[i].cases)"
-                deathsCount.text = "\(CovidSingleton.shared.prefecture[i].deaths)"
-                
-            }
+            
         }
 
-    }
+    
     private func gradientLayer() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 60)
@@ -105,7 +106,7 @@ final class ChartViewController: UIViewController {
     }
     
     private func setUpUIView() {
-        uiView.frame = CGRect(x: 10, y: 400, width: view.frame.size.width - 20, height: 167)
+        uiView.frame = CGRect(x: 10, y: 480, width: view.frame.size.width - 20, height: 167)
         uiView.backgroundColor = .white
         uiView.layer.cornerRadius = 10
         uiView.layer.shadowColor = colors.black.cgColor
@@ -114,6 +115,8 @@ final class ChartViewController: UIViewController {
         uiView.layer.shadowRadius = 10
         view.addSubview(uiView)
     }
+    
+   
     
     private func bottomLabel(_ parentView: UIView, _ label: UILabel, _ x: CGFloat, _ y: CGFloat, text: String, size: CGFloat, weight: UIFont.Weight, color: UIColor) {
         view.backgroundColor = .systemGroupedBackground
@@ -128,7 +131,74 @@ final class ChartViewController: UIViewController {
         label.frame = CGRect(x: 0, y: y, width: parentView.frame.size.width / 3.5, height: 50)
         label.center.x = view.center.x * x - 10
         parentView.addSubview(label)
+        
+        
     }
+    
+    private func displayDataSetUiVeiw() {
+        for i in 0 ..< CovidSingleton.shared.prefecture.count {
+            if CovidSingleton.shared.prefecture[i].name_ja == "東京" {
+                prefecturs.text = CovidSingleton.shared.prefecture[i].name_ja
+                pcrCount.text = "\(CovidSingleton.shared.prefecture[i].pcr)"
+                casesCount.text = "\(CovidSingleton.shared.prefecture[i].cases)"
+                deathsCount.text = "\(CovidSingleton.shared.prefecture[i].deaths)"
+            }
+        }
+    }
+    
+    func displayDataSetChartView() {
+        
+        let chartView = HorizontalBarChartView(frame: CGRect(x: 0, y: 150, width: view.frame.size.width, height: 300))
+        // yAxisDuration 横方向 アニメーション1秒かけてグラフ生成 easingOption アニメーションの種類
+        chartView.animate(yAxisDuration: 1.0, easingOption: .easeInCubic)
+        // x軸ラベル数
+        chartView.xAxis.labelCount = 10
+        // x軸ラベル色
+        chartView.xAxis.labelTextColor = colors.bluePurple
+        // x軸のグリッド線除去
+        chartView.xAxis.drawGridLinesEnabled = false
+        chartView.delegate = self
+        // ダブルタップでズーム不可
+        chartView.doubleTapToZoomEnabled = false
+        // 2本指 ピンチアクションズーム不可
+        chartView.pinchZoomEnabled = false
+        // y軸ラベル色
+        chartView.leftAxis.labelTextColor = colors.bluePurple
+        // チャート説明、チャート名 表示しない
+        chartView.legend.enabled = false
+        // 右側の軸の表示をしないようにする
+        chartView.rightAxis.enabled = false
+        prefectureArray = CovidSingleton.shared.prefecture
+
+        // 縦軸の都道府県名
+        var names: [String] = []
+        // 10回回してnamesに都道府県名を追加する
+        for i in 0 ... 9 {
+            names += ["\(self.prefectureArray[i].name_ja)"]
+        }
+        // chartViewのx軸の値にデータを代入
+        chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: names)
+        
+        var entries: [BarChartDataEntry] = []
+        // x インデックス番号 y 感染者数
+        for i in 0 ... 9 {
+            entries += [BarChartDataEntry(x: Double(i), y: Double(prefectureArray[i].cases))]
+        }
+        
+        let set = BarChartDataSet(entries: entries, label: "県別状況データ")
+        // 棒グラフの色
+        set.colors = [colors.blue]
+        // 棒グラフの頭に表示される値の色 今回は表示されない
+        set.valueTextColor = colors.bluePurple
+        // 棒グラフのデータをタップ時の色
+        set.highlightColor = colors.white
+        // chartViewのdataプロパティに整形したデータを代入
+        chartView.data = BarChartData(dataSet: set)
+        view.addSubview(chartView)
+    }
+    
+
+        
     
     @objc func goCircle() {
         print("goCircle")
@@ -158,4 +228,11 @@ extension ChartViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         print("キャンセルボタン")
     }
+    
+   
+}
+
+//MARK: ChartViewDelegate
+extension ChartViewController: ChartViewDelegate {
+    
 }
