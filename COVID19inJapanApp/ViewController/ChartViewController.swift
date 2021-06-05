@@ -26,7 +26,7 @@ final class ChartViewController: UIViewController {
     // 各都道府県データ
     private var prefectureArray: [CovidInfo.Prefecture] = []
     // チャート表示
-    private var chartView: HorizontalBarChartView?
+//    private var chartView: HorizontalBarChartView?
     private var segment = UISegmentedControl()
     private var pattern = "cases"
     private let searchBar = UISearchBar()
@@ -70,10 +70,11 @@ final class ChartViewController: UIViewController {
         let nextButton = UIButton(type: .system)
         nextButton.frame = CGRect(x: view.frame.size.width - 105, y: 25, width: 100, height: 30)
         nextButton.setTitle("円グラフ", for: .normal)
-        nextButton.setTitleColor(colors.white, for: .normal)
+        nextButton.setTitleColor(colors.blue, for: .normal)
         nextButton.titleLabel?.font = .systemFont(ofSize: 20)
         nextButton.addTarget(self, action: #selector(goCircle), for: .touchUpInside)
-        view.addSubview(nextButton)
+        navigationItem.titleView = nextButton
+//        view.addSubview(nextButton)
     
 //        let backButton = UIButton(type: .system)
 //        backButton.frame = CGRect(x: 10, y: 30, width: 20, height: 20)
@@ -223,7 +224,9 @@ final class ChartViewController: UIViewController {
         
     
     @objc func goCircle() {
-        print("goCircle")
+        let storyboard = UIStoryboard(name: "CircleChartView", bundle: nil)
+        let CircleChartViewController = storyboard.instantiateViewController(withIdentifier: "goCircleChartView") as! CircleChartViewController
+        self.navigationController?.pushViewController(CircleChartViewController, animated: true)
     }
     // どの選択を選んだのかpatternに代入
     // 画面再構築
@@ -275,8 +278,8 @@ extension ChartViewController: ChartViewDelegate {
             let index = dataSet.entryIndex(entry: entry)
             prefecturs.text = "\(prefectureArray[index].name_ja)"
             pcrCount.text = "\(prefectureArray[index].pcr)"
-            cases.text = "\(prefectureArray[index].cases)"
-            deaths.text = "\(prefectureArray[index].deaths)"
+            casesCount.text = "\(prefectureArray[index].cases)"
+            deathsCount.text = "\(prefectureArray[index].deaths)"
         }
     }
     

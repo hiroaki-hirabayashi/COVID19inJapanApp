@@ -160,7 +160,7 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		F463979B264C0B1D0031C4EA /* Extension */ = {
+		F463979B264C0B1D0031C4EA /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				F4DAC04926418CF800330870 /* Colors.swift */,
@@ -168,7 +168,7 @@
 				F46397582643B7920031C4EA /* WebAPI.swift */,
 				F46397B5264D6B3F0031C4EA /* CovidSingleton.swift */,
 			);
-			path = Extension;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		F4DAC00426416FF200330870 = {
@@ -196,7 +196,7 @@
 		F4DAC00F26416FF200330870 /* COVID19inJapanApp */ = {
 			isa = PBXGroup;
 			children = (
-				F463979B264C0B1D0031C4EA /* Extension */,
+				F463979B264C0B1D0031C4EA /* Model */,
 				F463979A264C0A9A0031C4EA /* ViewController */,
 				F4639799264C0A840031C4EA /* View */,
 				F4DAC01026416FF200330870 /* AppDelegate.swift */,
