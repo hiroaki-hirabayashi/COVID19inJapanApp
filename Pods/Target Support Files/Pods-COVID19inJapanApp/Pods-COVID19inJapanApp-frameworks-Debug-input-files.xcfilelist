@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-COVID19inJapanApp/Pods-COVID19inJapanApp-frameworks.sh
+${BUILT_PRODUCTS_DIR}/CalculateCalendarLogic/CalculateCalendarLogic.framework
+${BUILT_PRODUCTS_DIR}/Charts/Charts.framework
+${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework
