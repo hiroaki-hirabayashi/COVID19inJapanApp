@@ -15,6 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //アプリ起動時に各都道府県データを取得し、シングルトンで実装したクラスにデータを保存
+//        FirebaseApp.configure()
+        Covid19API.getPrefecture(completion: {(result: [CovidInfo.Prefecture]) -> Void in
+            CovidSingleton.shared.prefecture = result
+        })
+        
+        
+        
         return true
     }
 

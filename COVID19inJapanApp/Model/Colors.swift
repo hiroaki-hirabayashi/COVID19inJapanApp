@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 struct Colors {
-    let white = UIColor.systemGray
+    let white = UIColor.white
     let black = UIColor(red: 0, green: 0, blue: 0, alpha: 0.9)
     let red = UIColor(red: 245/255, green: 121/255, blue: 109/255, alpha: 1)
     let blue = UIColor(red: 92/255, green: 137/255, blue: 200/255, alpha: 1)
