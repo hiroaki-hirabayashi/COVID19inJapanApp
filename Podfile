@@ -18,7 +18,14 @@ target 'COVID19inJapanApp' do
 
   pod 'FSCalendar'
   pod 'CalculateCalendarLogic'
-  pod 'Charts'		
+  pod 'Charts'	
+
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
+	
 
 
 end

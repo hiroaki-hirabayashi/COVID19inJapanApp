@@ -19,6 +19,7 @@
 		F46397A8264D5E400031C4EA /* CircleChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46397A7264D5E400031C4EA /* CircleChartViewController.swift */; };
 		F46397AE264D5F190031C4EA /* CircleChartView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46397AD264D5F190031C4EA /* CircleChartView.storyboard */; };
 		F46397B6264D6B3F0031C4EA /* CovidSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46397B5264D6B3F0031C4EA /* CovidSingleton.swift */; };
+		F483DF4E2674B00700FCC5C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F483DF4D2674B00600FCC5C1 /* GoogleService-Info.plist */; };
 		F4DAC01126416FF200330870 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DAC01026416FF200330870 /* AppDelegate.swift */; };
 		F4DAC01326416FF200330870 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DAC01226416FF200330870 /* SceneDelegate.swift */; };
 		F4DAC01526416FF200330870 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DAC01426416FF200330870 /* TopViewController.swift */; };
@@ -67,6 +68,7 @@
 		F46397A7264D5E400031C4EA /* CircleChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleChartViewController.swift; sourceTree = "<group>"; };
 		F46397AD264D5F190031C4EA /* CircleChartView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CircleChartView.storyboard; sourceTree = "<group>"; };
 		F46397B5264D6B3F0031C4EA /* CovidSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidSingleton.swift; sourceTree = "<group>"; };
+		F483DF4D2674B00600FCC5C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F4DAC00D26416FF200330870 /* COVID19inJapanApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = COVID19inJapanApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4DAC01026416FF200330870 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4DAC01226416FF200330870 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				F4DAC01026416FF200330870 /* AppDelegate.swift */,
 				F4DAC01226416FF200330870 /* SceneDelegate.swift */,
 				F4DAC02126416FF400330870 /* Info.plist */,
+				F483DF4D2674B00600FCC5C1 /* GoogleService-Info.plist */,
 				F4DAC01926416FF200330870 /* COVID19inJapanApp.xcdatamodeld */,
 			);
 			path = COVID19inJapanApp;
@@ -339,6 +342,7 @@
 				F46397852648A6840031C4EA /* HealthCheck.storyboard in Resources */,
 				F4DAC01D26416FF400330870 /* Assets.xcassets in Resources */,
 				F4DAC01826416FF200330870 /* Main.storyboard in Resources */,
+				F483DF4E2674B00700FCC5C1 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,8 @@
 
 import UIKit
 import CoreData
+import Firebase
+import FirebaseFirestore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,15 +17,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+
+        // Firebaseセットアップ
+        FirebaseApp.configure()
         //アプリ起動時に各都道府県データを取得し、シングルトンで実装したクラスにデータを保存
-//        FirebaseApp.configure()
         Covid19API.getPrefecture(completion: {(result: [CovidInfo.Prefecture]) -> Void in
             CovidSingleton.shared.prefecture = result
         })
         
-        
-        
+        // サーバー上のFirestoreにデータ書き込みをする ↓確認コード
+//        Firestore.firestore().collection("users").document("Message").setData([
+//            "UserMessage": "message",
+//            "Data": "messageData",
+//            "UserId": "messageId"
+//        ],merge: false) { err in
+//            if let err = err {
+//                print("Error writing document \(err)")
+//            } else {
+//                print("Document successfully written!")
+//            }
+//        }
         return true
     }
 
