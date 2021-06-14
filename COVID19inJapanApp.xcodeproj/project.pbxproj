@@ -10,6 +10,8 @@
 		08DB05D1E1B9EF7117B81317 /* Pods_COVID19inJapanApp_COVID19inJapanAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D51A0B8565B8C146ECA32307 /* Pods_COVID19inJapanApp_COVID19inJapanAppUITests.framework */; };
 		090EB63A4D0922356B963FD9 /* Pods_COVID19inJapanApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07844E7802D9D85CA17CB9AB /* Pods_COVID19inJapanApp.framework */; };
 		EFA89789207C8D47F8219340 /* Pods_COVID19inJapanAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22897E4A4B3BCB103167D196 /* Pods_COVID19inJapanAppTests.framework */; };
+		F45F61EE267783E2008AEB8C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F61ED267783E2008AEB8C /* ChatViewController.swift */; };
+		F45F61F326778411008AEB8C /* ChatView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F45F61F226778411008AEB8C /* ChatView.storyboard */; };
 		F463975426436D150031C4EA /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463975326436D150031C4EA /* Entity.swift */; };
 		F46397592643B7920031C4EA /* WebAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46397582643B7920031C4EA /* WebAPI.swift */; };
 		F46397802648A6180031C4EA /* HealthCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463977F2648A6180031C4EA /* HealthCheckViewController.swift */; };
@@ -59,6 +61,8 @@
 		B02847F4FE8E20EE313395D9 /* Pods-COVID19inJapanApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID19inJapanApp.release.xcconfig"; path = "Target Support Files/Pods-COVID19inJapanApp/Pods-COVID19inJapanApp.release.xcconfig"; sourceTree = "<group>"; };
 		C1223C2F2AB5C362D2562454 /* Pods-COVID19inJapanApp-COVID19inJapanAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID19inJapanApp-COVID19inJapanAppUITests.release.xcconfig"; path = "Target Support Files/Pods-COVID19inJapanApp-COVID19inJapanAppUITests/Pods-COVID19inJapanApp-COVID19inJapanAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D51A0B8565B8C146ECA32307 /* Pods_COVID19inJapanApp_COVID19inJapanAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COVID19inJapanApp_COVID19inJapanAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F45F61ED267783E2008AEB8C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		F45F61F226778411008AEB8C /* ChatView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatView.storyboard; sourceTree = "<group>"; };
 		F463975326436D150031C4EA /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		F46397582643B7920031C4EA /* WebAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPI.swift; sourceTree = "<group>"; };
 		F463977F2648A6180031C4EA /* HealthCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthCheckViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +150,7 @@
 				F463978F264C0A4B0031C4EA /* ChartView.storyboard */,
 				F46397AD264D5F190031C4EA /* CircleChartView.storyboard */,
 				F4DAC01E26416FF400330870 /* LaunchScreen.storyboard */,
+				F45F61F226778411008AEB8C /* ChatView.storyboard */,
 				F4DAC01C26416FF400330870 /* Assets.xcassets */,
 			);
 			path = View;
@@ -158,6 +163,7 @@
 				F463977F2648A6180031C4EA /* HealthCheckViewController.swift */,
 				F4639794264C0A750031C4EA /* ChartViewController.swift */,
 				F46397A7264D5E400031C4EA /* CircleChartViewController.swift */,
+				F45F61ED267783E2008AEB8C /* ChatViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -341,6 +347,7 @@
 				F4639790264C0A4B0031C4EA /* ChartView.storyboard in Resources */,
 				F46397852648A6840031C4EA /* HealthCheck.storyboard in Resources */,
 				F4DAC01D26416FF400330870 /* Assets.xcassets in Resources */,
+				F45F61F326778411008AEB8C /* ChatView.storyboard in Resources */,
 				F4DAC01826416FF200330870 /* Main.storyboard in Resources */,
 				F483DF4E2674B00700FCC5C1 /* GoogleService-Info.plist in Resources */,
 			);
@@ -480,6 +487,7 @@
 				F46397A8264D5E400031C4EA /* CircleChartViewController.swift in Sources */,
 				F46397B6264D6B3F0031C4EA /* CovidSingleton.swift in Sources */,
 				F46397592643B7920031C4EA /* WebAPI.swift in Sources */,
+				F45F61EE267783E2008AEB8C /* ChatViewController.swift in Sources */,
 				F4DAC01B26416FF200330870 /* COVID19inJapanApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
