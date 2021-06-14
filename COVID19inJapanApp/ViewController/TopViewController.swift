@@ -204,7 +204,10 @@ final class TopViewController: UIViewController {
     }
     
     @objc func chatAction() {
-        print("chatタップした")
+        let storyboard = UIStoryboard(name: "ChatView", bundle: nil)
+        let chatViewController = storyboard.instantiateViewController(withIdentifier: "goHealthCheck") as! ChatViewController
+        self.navigationController?.pushViewController(chatViewController, animated: true)
+
     }
     
     @objc func reloadAction() {

@@ -6,24 +6,39 @@
 //
 
 import UIKit
+import MessageKit
+import InputBarAccessoryView
+import FirebaseFirestore
 
-class ChatViewController: UIViewController {
+class ChatViewController: MessagesViewController, /*MessagesDataSource*/ MessageCellDelegate, MessagesLayoutDelegate, MessagesDisplayDelegate {
+    private let colors = Colors()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        messagesCollectionView.messageCellDelegate = self
+        messagesCollectionView.messagesLayoutDelegate = self
+        messagesCollectionView.messagesDisplayDelegate = self
+        messagesCollectionView.messageCellDelegate = self
+        messageInputBar.delegate = self
+        messagesCollectionView.contentInset.top = 70
     }
     
+//    func currentSender() -> SenderType {
+//        <#code#>
+//    }
+//
+//    func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
+//        <#code#>
+//    }
+//
+//    func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
+//        <#code#>
+//    }
+//
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+extension ChatViewController: InputBarAccessoryViewDelegate {
+    
 }
