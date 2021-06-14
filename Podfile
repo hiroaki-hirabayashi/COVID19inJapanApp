@@ -25,6 +25,9 @@ target 'COVID19inJapanApp' do
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
+  pod 'MessageKit'
+  pod 'MessageInputBar'
+
 	
 
 
