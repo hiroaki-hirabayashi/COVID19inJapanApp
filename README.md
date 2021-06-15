@@ -8,4 +8,15 @@
 - Firebase,Firestore
   
 - ライブラリ
+→ pod 'FSCalendar'
+  pod 'CalculateCalendarLogic'
+  pod 'Charts'	
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
+  pod 'MessageKit'
+  pod 'MessageInputBar'
+
 
