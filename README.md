@@ -1,12 +1,11 @@
 # COVID19inJapanApp
 
->Xcode 12.4
+- Xcode 12.4
 
->COVID-19 Japan Web API:
+- COVID-19 Japan Web API:
  https://documenter.getpostman.com/view/9215231/SzYaWe6h?version=latest
 
->DB
-Firebase,Firestore
+- Firebase,Firestore
   
->ライブラリ
+- ライブラリ
 
