@@ -22,7 +22,41 @@ class ChatViewController: MessagesViewController, /*MessagesDataSource*/ Message
         messagesCollectionView.messageCellDelegate = self
         messageInputBar.delegate = self
         messagesCollectionView.contentInset.top = 70
+    
+        let uiView = UIView()
+        uiView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 70)
+        view.addSubview(uiView)
+        
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 20, weight: .bold)
+        label.textColor = colors.white
+        label.text = "Docter"
+        label.frame = CGRect(x: 0, y: 20, width: 100, height: 40)
+        label.center.x = view.center.x
+        label.textAlignment = .center
+        uiView.addSubview(label)
+        
+        let backButton = UIButton(type: .system)
+        backButton.frame = CGRect(x: 10, y: 30, width: 20, height: 20)
+        backButton.setImage(UIImage(named: "back"), for: .normal)
+        backButton.tintColor = colors.white
+        backButton.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
+        uiView.addSubview(backButton)
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 70)
+        gradientLayer.colors = [colors.bluePurple.cgColor, colors.blue.cgColor,]
+        gradientLayer.startPoint = CGPoint.init(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint.init(x: 1, y: 1)
+        uiView.layer.insertSublayer(gradientLayer, at: 0)
     }
+    
+    @objc func backButtonAction() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
     
 //    func currentSender() -> SenderType {
 //        <#code#>

@@ -16,6 +16,9 @@ final class TopViewController: UIViewController {
         super.viewDidLoad()
         setUpGradation()
         setUpContent()
+        setUpImageButton("chat1", x: view.frame.size.width - 50).addTarget(self, action: #selector(chatAction), for: .touchDown)
+        setUpImageButton("reload", x: 10).addTarget(self, action: #selector(reloadAction), for: .touchDown)
+
     }
     
     private func setUpGradation() {
