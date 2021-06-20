@@ -23,10 +23,11 @@ class ChatViewController: MessagesViewController, /*MessagesDataSource*/ Message
         messageInputBar.delegate = self
         messagesCollectionView.contentInset.top = 70
     
+        // ヘッダーの枠組み
         let uiView = UIView()
         uiView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 70)
         view.addSubview(uiView)
-        
+        // ヘッダーのタイトル
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .bold)
         label.textColor = colors.white
@@ -35,14 +36,14 @@ class ChatViewController: MessagesViewController, /*MessagesDataSource*/ Message
         label.center.x = view.center.x
         label.textAlignment = .center
         uiView.addSubview(label)
-        
+        // ヘッダー部分戻るボタン
         let backButton = UIButton(type: .system)
         backButton.frame = CGRect(x: 10, y: 30, width: 20, height: 20)
         backButton.setImage(UIImage(named: "back"), for: .normal)
         backButton.tintColor = colors.white
         backButton.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
         uiView.addSubview(backButton)
-        
+        // ヘッダー部分グラデーション
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 70)
         gradientLayer.colors = [colors.bluePurple.cgColor, colors.blue.cgColor,]

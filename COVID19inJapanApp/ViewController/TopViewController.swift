@@ -18,7 +18,7 @@ final class TopViewController: UIViewController {
         setUpContent()
         setUpImageButton("chat1", x: view.frame.size.width - 50).addTarget(self, action: #selector(chatAction), for: .touchDown)
         setUpImageButton("reload", x: 10).addTarget(self, action: #selector(reloadAction), for: .touchDown)
-
+        
     }
     
     private func setUpGradation() {
@@ -187,8 +187,7 @@ final class TopViewController: UIViewController {
         button.setTitleColor(color, for: .normal)
         parentView.addSubview(button)
         
-        setUpImageButton("chat1", x: view.frame.size.width - 50).addTarget(self, action: #selector(chatAction), for: .touchDown)
-        setUpImageButton("reload", x: 10).addTarget(self, action: #selector(reloadAction), for: .touchDown)
+        
         
         return button
     }
