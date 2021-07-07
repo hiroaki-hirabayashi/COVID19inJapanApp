@@ -1,5 +1,6 @@
 # COVID19inJapanApp
-※Storyboard無しVer
+
+- 一部Storyboard無し
 
 - Xcode 12.4
 
