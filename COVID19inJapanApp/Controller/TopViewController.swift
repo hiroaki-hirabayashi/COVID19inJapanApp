@@ -16,9 +16,6 @@ final class TopViewController: UIViewController {
         super.viewDidLoad()
         setUpGradation()
         setUpContent()
-        setUpImageButton("chat1", x: view.frame.size.width - 50).addTarget(self, action: #selector(chatAction), for: .touchDown)
-        setUpImageButton("reload", x: 10).addTarget(self, action: #selector(reloadAction), for: .touchDown)
-        
     }
     
     private func setUpGradation() {
@@ -82,6 +79,12 @@ final class TopViewController: UIViewController {
         setUpButton("健康管理", size: labelSize, y: height + 190, color: colors.blue, parentView: view).addTarget(self, action: #selector(goHealthCheck), for: .touchDown)
         setUpButton("県別状況", size: labelSize, y: height + 240, color: colors.blue, parentView: view).addTarget(self, action: #selector(goChart), for: .touchDown)
         
+        
+        setUpImageButton("chat1", x: view.frame.size.width - 50).addTarget(self, action: #selector(chatAction), for: .touchDown)
+        setUpImageButton("reload", x: 10).addTarget(self, action: #selector(reloadAction), for: .touchDown)
+
+        
+        
         let imageView = UIImageView()
         let image = UIImage(named: "virus")
         imageView.image = image
@@ -99,7 +102,6 @@ final class TopViewController: UIViewController {
         setUpAPI(parentView: contentView)
         
         //        setUpAPILabel(discharge, size: labelSize, centerX: rightX, y: 260, font: labelFont, color: labelColor, parentView)
-        
     }
     
     // 表示する項目のラベル、文字
@@ -199,7 +201,7 @@ final class TopViewController: UIViewController {
         button.setImage(UIImage(named: name), for: .normal)
         button.frame.size = CGSize(width: 30, height: 30)
         // ボタンのX,Y座標
-        button.frame.origin = CGPoint(x: x, y: 25)
+        button.frame.origin = CGPoint(x: x, y: 70)
         button.tintColor = .white
         view.addSubview(button)
         return button
@@ -207,7 +209,7 @@ final class TopViewController: UIViewController {
     
     @objc func chatAction() {
         let storyboard = UIStoryboard(name: "ChatView", bundle: nil)
-        let chatViewController = storyboard.instantiateViewController(withIdentifier: "goHealthCheck") as! ChatViewController
+        let chatViewController = storyboard.instantiateViewController(withIdentifier: "goChat") as! ChatViewController
         self.navigationController?.pushViewController(chatViewController, animated: true)
 
     }

@@ -11,10 +11,35 @@ import InputBarAccessoryView
 import FirebaseFirestore
 
 class ChatViewController: MessagesViewController, /*MessagesDataSource*/ MessageCellDelegate, MessagesLayoutDelegate, MessagesDisplayDelegate {
+    
     private let colors = Colors()
-
+    private var userId = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Firestore.firestore().collection("Message").document().setData([
+            "date" : Date(),
+            "senderId" : "testId",
+            "text" : "testText",
+            "userName" : "testName"
+        ])
+        //Messageコレクションのドキュメントを全取得 データがdocument, エラーがerrorに
+        Firestore.firestore().collection("Message").getDocuments { (document, error) in
+            //エラーが空ではない時(つまりエラーがある時)エラー分を出力 #line → 問題がある行を出力する
+            if error != nil {
+                print("ChatViewController: Line(\(#line)): error:\(error)")
+            } else {
+                if let document = document {
+                    for i in 0 ..< document.count {
+                        print((document.documents[i].get("date") as! Timestamp).dateValue())
+                        print(document.documents[i].get("senderId") as! String)
+                        print(document.documents[i].get("text") as! String)
+                        print(document.documents[i].get("userName") as! String)
+                    }
+                }
+            }
+        }
 
         messagesCollectionView.messageCellDelegate = self
         messagesCollectionView.messagesLayoutDelegate = self
@@ -50,6 +75,15 @@ class ChatViewController: MessagesViewController, /*MessagesDataSource*/ Message
         gradientLayer.startPoint = CGPoint.init(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint.init(x: 1, y: 1)
         uiView.layer.insertSublayer(gradientLayer, at: 0)
+        
+        // if letで取得できた時にuserIdに代入する
+        if let uuid = UIDevice.current.identifierForVendor?.uuidString {
+            userId = uuid
+            print("ここ!!!!!!!!!!!!!!!!uuId\(userId)")
+        }
+        
+        
+        
     }
     
     @objc func backButtonAction() {

@@ -12,6 +12,7 @@
 		EFA89789207C8D47F8219340 /* Pods_COVID19inJapanAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22897E4A4B3BCB103167D196 /* Pods_COVID19inJapanAppTests.framework */; };
 		F45F61EE267783E2008AEB8C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F61ED267783E2008AEB8C /* ChatViewController.swift */; };
 		F45F61F326778411008AEB8C /* ChatView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F45F61F226778411008AEB8C /* ChatView.storyboard */; };
+		F45F624726ADC357008AEB8C /* FirestoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F624626ADC357008AEB8C /* FirestoreData.swift */; };
 		F463975426436D150031C4EA /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463975326436D150031C4EA /* Entity.swift */; };
 		F46397592643B7920031C4EA /* WebAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46397582643B7920031C4EA /* WebAPI.swift */; };
 		F46397802648A6180031C4EA /* HealthCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463977F2648A6180031C4EA /* HealthCheckViewController.swift */; };
@@ -63,6 +64,7 @@
 		D51A0B8565B8C146ECA32307 /* Pods_COVID19inJapanApp_COVID19inJapanAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COVID19inJapanApp_COVID19inJapanAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F45F61ED267783E2008AEB8C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		F45F61F226778411008AEB8C /* ChatView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatView.storyboard; sourceTree = "<group>"; };
+		F45F624626ADC357008AEB8C /* FirestoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreData.swift; sourceTree = "<group>"; };
 		F463975326436D150031C4EA /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		F46397582643B7920031C4EA /* WebAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPI.swift; sourceTree = "<group>"; };
 		F463977F2648A6180031C4EA /* HealthCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthCheckViewController.swift; sourceTree = "<group>"; };
@@ -156,7 +158,7 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		F463979A264C0A9A0031C4EA /* ViewController */ = {
+		F463979A264C0A9A0031C4EA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				F4DAC01426416FF200330870 /* TopViewController.swift */,
@@ -165,7 +167,7 @@
 				F46397A7264D5E400031C4EA /* CircleChartViewController.swift */,
 				F45F61ED267783E2008AEB8C /* ChatViewController.swift */,
 			);
-			path = ViewController;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		F463979B264C0B1D0031C4EA /* Model */ = {
@@ -205,13 +207,14 @@
 			isa = PBXGroup;
 			children = (
 				F463979B264C0B1D0031C4EA /* Model */,
-				F463979A264C0A9A0031C4EA /* ViewController */,
 				F4639799264C0A840031C4EA /* View */,
+				F463979A264C0A9A0031C4EA /* Controller */,
 				F4DAC01026416FF200330870 /* AppDelegate.swift */,
 				F4DAC01226416FF200330870 /* SceneDelegate.swift */,
 				F4DAC02126416FF400330870 /* Info.plist */,
 				F483DF4D2674B00600FCC5C1 /* GoogleService-Info.plist */,
 				F4DAC01926416FF200330870 /* COVID19inJapanApp.xcdatamodeld */,
+				F45F624626ADC357008AEB8C /* FirestoreData.swift */,
 			);
 			path = COVID19inJapanApp;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				F4DAC01526416FF200330870 /* TopViewController.swift in Sources */,
 				F4DAC04A26418CF800330870 /* Colors.swift in Sources */,
 				F463975426436D150031C4EA /* Entity.swift in Sources */,
+				F45F624726ADC357008AEB8C /* FirestoreData.swift in Sources */,
 				F4DAC01126416FF200330870 /* AppDelegate.swift in Sources */,
 				F4DAC01326416FF200330870 /* SceneDelegate.swift in Sources */,
 				F4639795264C0A750031C4EA /* ChartViewController.swift in Sources */,
