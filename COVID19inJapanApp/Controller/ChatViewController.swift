@@ -14,6 +14,8 @@ class ChatViewController: MessagesViewController, /*MessagesDataSource*/ Message
     
     private let colors = Colors()
     private var userId = ""
+    //FirestoreDate型の空の配列
+    private var firestoreData: [FirestoreData] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,14 @@ class ChatViewController: MessagesViewController, /*MessagesDataSource*/ Message
                         print(document.documents[i].get("senderId") as! String)
                         print(document.documents[i].get("text") as! String)
                         print(document.documents[i].get("userName") as! String)
+                        
+                        var storeData = FirestoreData()
+                        storeData.date = (document.documents[i].get("date") as! Timestamp).dateValue()
+                        storeData.senderId = document.documents[i].get("senderId") as? String
+                        storeData.text = document.documents[i].get("text") as? String
+                        storeData.userName = document.documents[i].get("userName") as? String
+                        self.firestoreData.append(storeData)
+                        print(self.firestoreData)
                     }
                 }
             }

@@ -8,8 +8,11 @@
 import Foundation
 import MessageKit
 
-struct FirestoreDate {
-    var date: Data?
+// Firestoreから受け取ったデータを格納する構造体
+//? オプショナルでnilを許容する
+//日付、名前、メッセージ、UU
+struct FirestoreData {
+    var date: Date?
     var senderId: String?
     var text: String?
     var userName: String?
