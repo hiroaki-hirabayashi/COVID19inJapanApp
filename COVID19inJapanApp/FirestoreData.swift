@@ -34,7 +34,7 @@ struct Message: MessageType {
     //日付情報
     var sentDate: Date
     
-    //Message構造体に値を代入する(ユーザーから投げられてくる情報をMessageKitのプロトコルに渡す)
+    //Message構造体に値を代入する(ユーザーから投げられてくる画像、動画、位置情報メッセージ等をMessageKitのプロトコルに渡す)
     private init(kind: MessageKind, sender: Sender, messageId: String, date: Date) {
         self.kind = kind
         self.sender = sender
@@ -47,7 +47,7 @@ struct Message: MessageType {
         self.init(kind: .text(text), sender: sender, messageId: messageId, date: date)
     }
     
-    //MessageKindがNSAttributedString型の時
+    //MessageKindがNSAttributedString型の時(Stringより複雑な装飾)
     init(attributedText: NSAttributedString, sender: Sender, messageId: String, date: Date) {
         self.init(kind: .attributedText(attributedText), sender: sender, messageId: messageId, date: date)
     }

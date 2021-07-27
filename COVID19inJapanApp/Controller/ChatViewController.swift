@@ -10,12 +10,15 @@ import MessageKit
 import InputBarAccessoryView
 import FirebaseFirestore
 
-class ChatViewController: MessagesViewController, /*MessagesDataSource*/ MessageCellDelegate, MessagesLayoutDelegate, MessagesDisplayDelegate {
+class ChatViewController: MessagesViewController, MessagesDataSource, MessageCellDelegate, MessagesLayoutDelegate, MessagesDisplayDelegate {
     
     private let colors = Colors()
+    //端末の固有ID
     private var userId = ""
     //FirestoreDate型の空の配列
     private var firestoreData: [FirestoreData] = []
+    //メッセージデータを保存するための変数 Message構造体型
+    private var messages: [Message] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +54,7 @@ class ChatViewController: MessagesViewController, /*MessagesDataSource*/ Message
             }
         }
 
+        messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messageCellDelegate = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
@@ -86,7 +90,7 @@ class ChatViewController: MessagesViewController, /*MessagesDataSource*/ Message
         gradientLayer.endPoint = CGPoint.init(x: 1, y: 1)
         uiView.layer.insertSublayer(gradientLayer, at: 0)
         
-        // if letで取得できた時にuserIdに代入する
+        // if letで取得できた時に端末の固有IDをuserIdに代入する
         if let uuid = UIDevice.current.identifierForVendor?.uuidString {
             userId = uuid
             print("ここ!!!!!!!!!!!!!!!!uuId\(userId)")
@@ -102,20 +106,46 @@ class ChatViewController: MessagesViewController, /*MessagesDataSource*/ Message
     
     
     
+    //下のfuncと2つで送信者が自分か自分以外かを判定する 自分
+    func currentSender() -> SenderType {
+        return Sender(senderId: userId, displayName: "MyName")
+    }
+    //自分以外
+    func otherSender() -> SenderType {
+        return Sender(senderId: "-1", displayName: "OtherName")
+    }
     
-//    func currentSender() -> SenderType {
-//        <#code#>
-//    }
-//
-//    func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
-//        <#code#>
-//    }
-//
-//    func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
-//        <#code#>
-//    }
-//
+    //メッセージ表示関数
+    func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
+        return messages[indexPath.section]
+    }
+    //メッセージの数を返す
+    func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
+        return messages.count
+    }
 
+    //forestoreData型からMessage型に変換する関数
+    //forestoreDataのtext,date,senderIdを受け取る
+    func createMessage(text: String, date: Date, _ senderId: String) -> Message {
+        //String型 → NSAttributedString型に変換 引数attributesで装飾している(文字サイズ15、文字色を白)
+        let attrubutedText = NSAttributedString(string: text, attributes: [.font: UIFont.systemFont(ofSize: 15), .foregroundColor: UIColor.white])
+        //メッセージデータのsenderIdと端末の固有IDを代入しているuserIdが等しいか true false
+        let sender = (senderId == userId) ? currentSender() : otherSender()
+        //Messageインスタンスを生成 returnする
+        return Message(attributedText: attrubutedText, sender: sender as! Sender, messageId: UUID().uuidString, date: date)
+    }
+    
+    //func createMessageを使って変換する
+    func getMessage() -> [Message] {
+        var messageArray: [Message] = []
+        //firestoreDataの数だけループ回す
+        for i in 0 ..< firestoreData.count {
+            //messageArrayにcreateMessageを使ってMessage型に変換したデータを格納していく
+            messageArray.append(createMessage(text: firestoreData[i].text!, date: firestoreData[i].date!, firestoreData[i].senderId!))
+        }
+        //ループ処理が終わり、データが格納できたらmessageArrayをreturnする
+        return messageArray
+    }
 }
 
 extension ChatViewController: InputBarAccessoryViewDelegate {
