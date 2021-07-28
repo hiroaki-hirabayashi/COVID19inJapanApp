@@ -154,6 +154,14 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessageCel
         //ループ処理が終わり、データが格納できたらmessageArrayをreturnする
         return messageArray
     }
+    
+    // MARK:- MessageDisplayDelegate
+    //メッセージ描画時に発火
+    func backgroundColor(for message: MessageType, at indexPath: IndexPath, in MessagesCollectionView: MessagesCollectionView) -> UIColor {
+        //MessagesDataSourceの引数にmessageを渡して自分か相手かを判定する
+        return isFromCurrentSender(message: message) ? colors.blueGreen : UIColor.systemGray
+    }
+        
 }
 
 extension ChatViewController: InputBarAccessoryViewDelegate {
