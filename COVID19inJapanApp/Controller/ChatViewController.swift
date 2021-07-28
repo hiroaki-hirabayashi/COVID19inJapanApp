@@ -161,6 +161,26 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessageCel
         //MessagesDataSourceの引数にmessageを渡して自分か相手かを判定する
         return isFromCurrentSender(message: message) ? colors.blueGreen : UIColor.systemGray
     }
+    
+    //MessageLayoutDelegateの関数
+    //メッセージ下部の高さ
+    func messageBottomLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return 16
+    }
+    //MessageDataSource メッセージ下部に文字を表示する関数
+    //日付表示
+    func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        //Dateの日付、時間フォーマットを調整する
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        //Date()をString型の日付文字列に変換
+        let dateString = formatter.string(from: message.sentDate)
+        
+        //装飾してreturnする string:に変換した日付、attributes:に装飾する設定
+        return NSAttributedString(string: dateString, attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption2)])
+        
+    }
         
 }
 
