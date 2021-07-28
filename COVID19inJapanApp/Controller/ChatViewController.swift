@@ -18,7 +18,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessageCel
     //FirestoreDate型の空の配列
     private var firestoreData: [FirestoreData] = []
     //メッセージデータを保存するための変数 Message構造体型
-    private var messages: [Message] = []
+    private var messageData: [Message] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +37,8 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessageCel
             } else {
                 if let document = document {
                     for i in 0 ..< document.count {
+                        //フィールド名を指定
+                        //型を指定する 型がないとプロパティやメソッドが使えない為
                         print((document.documents[i].get("date") as! Timestamp).dateValue())
                         print(document.documents[i].get("senderId") as! String)
                         print(document.documents[i].get("text") as! String)
@@ -51,6 +53,12 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessageCel
                         print(self.firestoreData)
                     }
                 }
+                //message変数にgetMessageでfirestoreData → Messageに変換したデータを代入
+                self.messageData = self.getMessage()
+                //MessageKit messageの描画 リロードして描画させる
+                self.messagesCollectionView.reloadData()
+                //メッセージのを表示したら最新のメッセージが見れるように1番下までスクロールさせる
+                self.messagesCollectionView.scrollToBottom()
             }
         }
 
@@ -117,11 +125,11 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessageCel
     
     //メッセージ表示関数
     func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
-        return messages[indexPath.section]
+        return messageData[indexPath.section]
     }
     //メッセージの数を返す
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
-        return messages.count
+        return messageData.count
     }
 
     //forestoreData型からMessage型に変換する関数
