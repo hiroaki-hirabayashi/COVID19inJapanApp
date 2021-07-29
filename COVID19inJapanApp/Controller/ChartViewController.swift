@@ -105,7 +105,7 @@ final class ChartViewController: UIViewController {
     }
     
     private func setUpUIView() {
-        uiView.frame = CGRect(x: 10, y: 480, width: view.frame.size.width - 20, height: 167)
+        uiView.frame = CGRect(x: 10, y: view.frame.size.height - 200, width: view.frame.size.width - 20, height: 167)
         uiView.backgroundColor = .white
         uiView.layer.cornerRadius = 10
         uiView.layer.shadowColor = colors.black.cgColor
@@ -146,7 +146,7 @@ final class ChartViewController: UIViewController {
     }
     
     func displayDataSetChartView() {
-        let chartView = HorizontalBarChartView(frame: CGRect(x: 0, y: 150, width: view.frame.size.width, height: 300))
+        let chartView = HorizontalBarChartView(frame: CGRect(x: 0, y: 150, width: view.frame.size.width, height: view.frame.size.height - 353))
         // yAxisDuration 横方向 アニメーション1秒かけてグラフ生成 easingOption アニメーションの種類
         chartView.animate(yAxisDuration: 1.0, easingOption: .easeInCubic)
         // x軸ラベル数

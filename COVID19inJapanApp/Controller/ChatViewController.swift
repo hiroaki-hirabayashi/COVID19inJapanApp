@@ -151,11 +151,95 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessageCel
             //messageArrayにcreateMessageを使ってMessage型に変換したデータを格納していく
             messageArray.append(createMessage(text: firestoreData[i].text!, date: firestoreData[i].date!, firestoreData[i].senderId!))
         }
+        //messageArrayを日付順ソート処理
+        messageArray.sort(by: {
+            a, b -> Bool in
+            //aの日付fhがbの日付よりも小さいならtrue 大きいならfalse
+            return a.sentDate < b.sentDate
+        })
         //ループ処理が終わり、データが格納できたらmessageArrayをreturnする
         return messageArray
     }
+    
+    // MARK:- MessageDisplayDelegate
+    //メッセージ描画時に発火
+    func backgroundColor(for message: MessageType, at indexPath: IndexPath, in MessagesCollectionView: MessagesCollectionView) -> UIColor {
+        //MessagesDataSourceの引数にmessageを渡して自分か相手かを判定する
+        return isFromCurrentSender(message: message) ? colors.blueGreen : UIColor.systemGray
+    }
+    
+    //MessageLayoutDelegateの関数
+    //メッセージ下部の高さ
+    func messageBottomLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return 16
+    }
+    //MessageDataSource メッセージ下部に文字を表示する関数
+    //日付表示
+    func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        //Dateの日付、時間フォーマットを調整する
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        //Date()をString型の日付文字列に変換
+        let dateString = formatter.string(from: message.sentDate)
+        
+        //装飾してreturnする string:に変換した日付、attributes:に装飾する設定
+        return NSAttributedString(string: dateString, attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption2)])
+    }
+    
+    //MessageDisplayDelegate
+    //アイコン設定関数
+    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        let avatar: Avatar
+       //UIImageを渡してavatarView.set isFromCurrentSenderでメッセージが自分か相手か判定
+        avatar = Avatar(image: UIImage(named: isFromCurrentSender(message: message) ? "cat" : "dog"))
+        avatarView.set(avatar: avatar)
+    }
+        
 }
 
 extension ChatViewController: InputBarAccessoryViewDelegate {
+    
+    //メッセージ送信時に発火する関数
+    //引数inputBarは入力部分に関するもの
+    func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
+        //入力情報にアクセス
+        for component in inputBar.inputTextView.components {
+            //forで渡された要素がStringにキャスト出来たら代入する
+            if let text = component as? String {
+                //文字の装飾
+                let attributedtText = NSAttributedString(string: text, attributes: [.font: UIFont.systemFont(ofSize: 15), .foregroundColor: UIColor.white])
+                //入力sれた文字をMessageKitでチャットに表示させる
+                let message = Message(attributedText: attributedtText, sender: currentSender() as! Sender, messageId: UUID().uuidString, date: Date())
+                //メッセージ配列にMessage方に変換されたmessageを追加
+                messageData.append(message)
+                //メッセージ表示のコレクションビュー 最新のメッセージを1番下に
+                messagesCollectionView.insertSections([messageData.count - 1])
+                //メッセージを保存する
+                sendToFirestore(message: text)
+            }
+        }
+        //メッセージ送信後に入力欄が空になるように""代入
+        //メッセージ1番下に移動
+        inputBar.inputTextView.text = ""
+        messagesCollectionView.scrollToBottom()
+    }
+    
+    //Firestoreに保存する処理
+    func sendToFirestore(message: String) {
+        //データをDictionaryにする
+        Firestore.firestore().collection("Messages").document().setData([
+            "date": Date(),
+            "senderId": userId,
+            "text": message,
+            "usrerName": userId
+           //Firestoreのcollectionにマージできなかった場合errが返ってくる
+            //エラーがあればエラー内容を出力する
+        ], merge: false) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            }
+        }
+    }
     
 }

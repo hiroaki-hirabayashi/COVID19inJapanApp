@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import PKHUD
 
 final class TopViewController: UIViewController {
     
@@ -164,14 +165,18 @@ final class TopViewController: UIViewController {
          クロージャの中は自動的にメインスレッドではなくなってしまうため、DispatchQueue.main.async{}でメインスレッドにしてあげる
          resultでCovidInfo.Total型のデータを受け取っているので、Entityファイルに定義した通りにCovidInfo.Total.変数としてアクセス出来る
          */
+        HUD.show(.progress, onView: view)
         Covid19API.getTotal { (result: CovidInfo.Total) -> Void in DispatchQueue.main.async {
-            pcr.text = "\(result.pcr)"
-            positive.text = "\(result.positive)"
-            hospitalize.text = "\(result.hospitalize)"
-            severe.text = "\(result.severe)"
-            death.text = "\(result.death)"
-            discharge.text = "\(result.discharge)"
-        }
+                pcr.text = "\(result.pcr)"
+                positive.text = "\(result.positive)"
+                hospitalize.text = "\(result.hospitalize)"
+                severe.text = "\(result.severe)"
+                death.text = "\(result.death)"
+                discharge.text = "\(result.discharge)"
+                print(Thread.isMainThread)
+                HUD.hide()
+            }
+            print(Thread.isMainThread)
         
         }
     }
