@@ -151,6 +151,12 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessageCel
             //messageArrayにcreateMessageを使ってMessage型に変換したデータを格納していく
             messageArray.append(createMessage(text: firestoreData[i].text!, date: firestoreData[i].date!, firestoreData[i].senderId!))
         }
+        //messageArrayを日付順ソート処理
+        messageArray.sort(by: {
+            a, b -> Bool in
+            //aの日付fhがbの日付よりも小さいならtrue 大きいならfalse
+            return a.sentDate < b.sentDate
+        })
         //ループ処理が終わり、データが格納できたらmessageArrayをreturnする
         return messageArray
     }
@@ -193,5 +199,47 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessageCel
 }
 
 extension ChatViewController: InputBarAccessoryViewDelegate {
+    
+    //メッセージ送信時に発火する関数
+    //引数inputBarは入力部分に関するもの
+    func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
+        //入力情報にアクセス
+        for component in inputBar.inputTextView.components {
+            //forで渡された要素がStringにキャスト出来たら代入する
+            if let text = component as? String {
+                //文字の装飾
+                let attributedtText = NSAttributedString(string: text, attributes: [.font: UIFont.systemFont(ofSize: 15), .foregroundColor: UIColor.white])
+                //入力sれた文字をMessageKitでチャットに表示させる
+                let message = Message(attributedText: attributedtText, sender: currentSender() as! Sender, messageId: UUID().uuidString, date: Date())
+                //メッセージ配列にMessage方に変換されたmessageを追加
+                messageData.append(message)
+                //メッセージ表示のコレクションビュー 最新のメッセージを1番下に
+                messagesCollectionView.insertSections([messageData.count - 1])
+                //メッセージを保存する
+                sendToFirestore(message: text)
+            }
+        }
+        //メッセージ送信後に入力欄が空になるように""代入
+        //メッセージ1番下に移動
+        inputBar.inputTextView.text = ""
+        messagesCollectionView.scrollToBottom()
+    }
+    
+    //Firestoreに保存する処理
+    func sendToFirestore(message: String) {
+        //データをDictionaryにする
+        Firestore.firestore().collection("Messages").document().setData([
+            "date": Date(),
+            "senderId": userId,
+            "text": message,
+            "usrerName": userId
+           //Firestoreのcollectionにマージできなかった場合errが返ってくる
+            //エラーがあればエラー内容を出力する
+        ], merge: false) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            }
+        }
+    }
     
 }
