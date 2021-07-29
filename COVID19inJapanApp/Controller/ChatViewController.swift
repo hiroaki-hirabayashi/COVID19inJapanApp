@@ -179,7 +179,15 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessageCel
         
         //装飾してreturnする string:に変換した日付、attributes:に装飾する設定
         return NSAttributedString(string: dateString, attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption2)])
-        
+    }
+    
+    //MessageDisplayDelegate
+    //アイコン設定関数
+    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        let avatar: Avatar
+       //UIImageを渡してavatarView.set isFromCurrentSenderでメッセージが自分か相手か判定
+        avatar = Avatar(image: UIImage(named: isFromCurrentSender(message: message) ? "cat" : "dog"))
+        avatarView.set(avatar: avatar)
     }
         
 }
