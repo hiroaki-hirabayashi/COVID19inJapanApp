@@ -1,13 +1,11 @@
 # COVID19inJapanApp
 
-- 一部Storyboard無し
-
+- Storyboard無し
 - Xcode 12.4
-
+- Firebase
 - COVID-19 Japan Web API:
  https://documenter.getpostman.com/view/9215231/SzYaWe6h?version=latest
 
-- pod<br>
   pod 'FSCalendar'<br>
   pod 'CalculateCalendarLogic'<br>
   pod 'Charts'	<br>
